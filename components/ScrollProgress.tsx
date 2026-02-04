@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export default function ScrollProgress() {
   const [progress, setProgress] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
+  const rafRef = useRef<number>()
 
   useEffect(() => {
     setIsMounted(true)
@@ -14,15 +15,22 @@ export default function ScrollProgress() {
     if (!isMounted) return
 
     const handleScroll = () => {
-      const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight - windowHeight
-      const scrolled = window.scrollY
-      const progress = (scrolled / documentHeight) * 100
-      setProgress(Math.min(100, Math.max(0, progress)))
+      if (rafRef.current != null) return
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = undefined
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight
+        const scrolled = documentHeight <= 0 ? 0 : window.scrollY
+        const value = documentHeight <= 0 ? 0 : (scrolled / documentHeight) * 100
+        setProgress(Math.min(100, Math.max(0, value)))
+      })
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (rafRef.current != null) cancelAnimationFrame(rafRef.current)
+    }
   }, [isMounted])
 
   if (!isMounted) return null

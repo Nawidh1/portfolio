@@ -39,20 +39,21 @@ export default function CursorTrail() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [isMounted])
 
-  // Fade out particles
+  // Single fade interval when mounted (no dependency on particles to avoid effect loop)
   useEffect(() => {
-    if (particles.length === 0) return
+    if (!isMounted) return
 
     const fadeInterval = setInterval(() => {
-      setParticles(prev =>
-        prev
+      setParticles(prev => {
+        if (prev.length === 0) return prev
+        return prev
           .map(p => ({ ...p, opacity: p.opacity - 0.05 }))
           .filter(p => p.opacity > 0)
-      )
+      })
     }, 30)
 
     return () => clearInterval(fadeInterval)
-  }, [particles.length])
+  }, [isMounted])
 
   if (!isMounted) return null
 

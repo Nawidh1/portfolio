@@ -7,6 +7,8 @@ import Projects from '@/components/Projects'
 import Education from '@/components/Experience'
 import Contact from '@/components/Contact'
 import RobotBuddy from '@/components/RobotBuddy'
+import FloatingOrb from '@/components/FloatingOrb'
+import MiniTerminal from '@/components/MiniTerminal'
 import CursorTrail from '@/components/CursorTrail'
 import FloatingCode from '@/components/FloatingCode'
 import InteractiveGrid from '@/components/InteractiveGrid'
@@ -31,6 +33,8 @@ export default function Home() {
       <Contact />
       <Footer />
       <RobotBuddy />
+      <FloatingOrb />
+      <MiniTerminal />
       <SoundWave />
     </main>
   )

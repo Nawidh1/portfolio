@@ -40,8 +40,20 @@ const codeSymbols = [
   'DOM',
 ]
 
+function createInitialParticles(): CodeParticle[] {
+  return Array.from({ length: 15 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    text: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
+    speed: 0.02 + Math.random() * 0.03,
+    opacity: 0.1 + Math.random() * 0.2,
+    size: 10 + Math.random() * 6,
+  }))
+}
+
 export default function FloatingCode() {
-  const [particles, setParticles] = useState<CodeParticle[]>([])
+  const [particles, setParticles] = useState<CodeParticle[]>(createInitialParticles)
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
@@ -51,20 +63,6 @@ export default function FloatingCode() {
   useEffect(() => {
     if (!isMounted) return
 
-    // Initialize particles
-    const initialParticles: CodeParticle[] = Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      text: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
-      speed: 0.02 + Math.random() * 0.03,
-      opacity: 0.1 + Math.random() * 0.2,
-      size: 10 + Math.random() * 6,
-    }))
-
-    setParticles(initialParticles)
-
-    // Animate particles
     const animationInterval = setInterval(() => {
       setParticles(prev =>
         prev.map(p => ({

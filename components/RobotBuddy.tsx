@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export default function RobotBuddy() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -9,6 +9,8 @@ export default function RobotBuddy() {
   const [message, setMessage] = useState('')
   const [showMessage, setShowMessage] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const mouseRef = useRef({ x: 0, y: 0 })
+  const rafRef = useRef<number>()
 
   const messages = [
     "Hello! 👋",
@@ -24,13 +26,21 @@ export default function RobotBuddy() {
     setIsMounted(true)
   }, [])
 
-  // Track mouse for eye movement
+  // Track mouse for eye movement (throttled via RAF to avoid update depth)
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      mouseRef.current = { x: e.clientX, y: e.clientY }
+    }
+    const tick = () => {
+      setMousePosition({ ...mouseRef.current })
+      rafRef.current = requestAnimationFrame(tick)
     }
     window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    rafRef.current = requestAnimationFrame(tick)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
   }, [])
 
   // Random blinking
