@@ -11,11 +11,11 @@ export default function FloatingOrb() {
   const [position, setPosition] = useState({ x: ORB_BASE_X, y: ORB_BASE_Y })
   const [isCharged, setIsCharged] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | null>(null)
   const posRef = useRef({ x: ORB_BASE_X, y: ORB_BASE_Y })
   const mouseRef = useRef({ x: 0, y: 0 })
   const lastRenderedPosRef = useRef({ x: ORB_BASE_X, y: ORB_BASE_Y })
-  const chargeTimeoutRef = useRef<ReturnType<typeof setTimeout>>()
+  const chargeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const MOVE_THRESHOLD = 2
 
   useEffect(() => {
@@ -64,14 +64,14 @@ export default function FloatingOrb() {
     }
 
     rafRef.current = requestAnimationFrame(tick)
-    return () => rafRef.current && cancelAnimationFrame(rafRef.current)
+    return () => { if (rafRef.current !== null) cancelAnimationFrame(rafRef.current) }
   }, [isMounted])
 
   const handleClick = () => {
     if (chargeTimeoutRef.current) clearTimeout(chargeTimeoutRef.current)
     setIsCharged(true)
     chargeTimeoutRef.current = setTimeout(() => {
-      chargeTimeoutRef.current = undefined
+      chargeTimeoutRef.current = null
       setIsCharged(false)
     }, 600)
   }

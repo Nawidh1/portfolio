@@ -10,7 +10,7 @@ export default function RobotBuddy() {
   const [showMessage, setShowMessage] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const mouseRef = useRef({ x: 0, y: 0 })
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | null>(null)
 
   const messages = [
     "Hello! 👋",

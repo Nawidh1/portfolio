@@ -6,13 +6,13 @@ import Link from 'next/link'
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
       if (rafRef.current != null) return
       rafRef.current = requestAnimationFrame(() => {
-        rafRef.current = undefined
+        rafRef.current = null
         setIsScrolled(window.scrollY > 50)
       })
     }

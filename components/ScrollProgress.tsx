@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react'
 export default function ScrollProgress() {
   const [progress, setProgress] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | null>(null)
 
   useEffect(() => {
     setIsMounted(true)
@@ -17,7 +17,7 @@ export default function ScrollProgress() {
     const handleScroll = () => {
       if (rafRef.current != null) return
       rafRef.current = requestAnimationFrame(() => {
-        rafRef.current = undefined
+        rafRef.current = null
         const documentHeight = document.documentElement.scrollHeight - window.innerHeight
         const scrolled = documentHeight <= 0 ? 0 : window.scrollY
         const value = documentHeight <= 0 ? 0 : (scrolled / documentHeight) * 100
