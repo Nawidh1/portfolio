@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
               Portfolio
             </h3>
             <p className="text-gray-400">
@@ -24,22 +24,22 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="hover:text-blue-400 transition-colors">
+                <a href="#home" className="hover:text-emerald-400 transition-colors">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:text-blue-400 transition-colors">
+                <a href="#about" className="hover:text-emerald-400 transition-colors">
                   About
                 </a>
               </li>
               <li>
-                <a href="#projects" className="hover:text-blue-400 transition-colors">
+                <a href="#projects" className="hover:text-emerald-400 transition-colors">
                   Projects
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-blue-400 transition-colors">
+                <a href="#contact" className="hover:text-emerald-400 transition-colors">
                   Contact
                 </a>
               </li>
@@ -55,7 +55,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-400 transition-colors"
+                  className="hover:text-emerald-400 transition-colors hover:scale-110"
                   aria-label={social.name}
                 >
                   <svg
