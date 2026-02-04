@@ -25,7 +25,9 @@ export default function HydrationFix() {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'bis_skin_checked') {
-          mutation.target.removeAttribute('bis_skin_checked')
+          if (mutation.target instanceof Element) {
+            mutation.target.removeAttribute('bis_skin_checked')
+          }
         }
         if (mutation.addedNodes.length > 0) {
           removeExtensionAttributes()
