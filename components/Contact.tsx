@@ -26,16 +26,13 @@ export default function Contact() {
       ])
 
       if (error) {
-        console.error('Error submitting form:', error)
-        // Fallback: just show success message even if Supabase isn't configured
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
       } else {
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
       }
-    } catch (error) {
-      console.error('Error:', error)
+    } catch {
       setStatus('error')
     }
   }
@@ -50,94 +47,65 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-800">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent reveal">
-            Get In Touch
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 mx-auto mb-12 reveal" />
+    <section id="contact" className="py-32 bg-neutral-950 relative">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-20">
+          <div className="reveal">
+            <p className="text-amber-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
+              Contact
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-8">
+              Let&apos;s
+              <br />
+              <span className="font-bold">connect</span>
+            </h2>
+            
+            <p className="text-neutral-400 mb-12 max-w-md">
+              Interested in working together or have a question? 
+              Feel free to reach out — I&apos;d love to hear from you.
+            </p>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">
-                Let&apos;s Connect
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
-                I&apos;m always open to discussing new projects, creative ideas,
-                or opportunities to be part of your visions. Feel free to reach
-                out!
-              </p>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 reveal">
-                  <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                    <svg
-                      className="w-6 h-6 text-emerald-600 dark:text-emerald-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800 dark:text-gray-200">
-                      Email
-                    </p>
-                    <a
-                      href="mailto:your.email@example.com"
-                      className="text-emerald-600 dark:text-emerald-400 hover:underline"
-                    >
-                      your.email@example.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 reveal">
-                  <div className="w-12 h-12 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
-                    <svg
-                      className="w-6 h-6 text-teal-600 dark:text-teal-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800 dark:text-gray-200">
-                      Location
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      Available Worldwide
-                    </p>
-                  </div>
+            <div className="space-y-8">
+              <div className="border-t border-neutral-800 pt-8">
+                <p className="text-neutral-500 text-sm uppercase tracking-wider mb-2">Email</p>
+                <a href="mailto:nawid@example.com" className="text-white text-xl hover:text-amber-500 transition-colors">
+                  nawid@example.com
+                </a>
+              </div>
+              <div className="border-t border-neutral-800 pt-8">
+                <p className="text-neutral-500 text-sm uppercase tracking-wider mb-2">Location</p>
+                <p className="text-white text-xl">Netherlands</p>
+              </div>
+              <div className="border-t border-neutral-800 pt-8">
+                <p className="text-neutral-500 text-sm uppercase tracking-wider mb-4">Social</p>
+                <div className="flex gap-6">
+                  <a
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-400 hover:text-amber-500 transition-colors text-sm"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-neutral-400 hover:text-amber-500 transition-colors text-sm"
+                  >
+                    LinkedIn
+                  </a>
                 </div>
               </div>
             </div>
+          </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="reveal">
+            <form onSubmit={handleSubmit} className="space-y-8">
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-neutral-500 text-sm uppercase tracking-wider mb-3"
                 >
                   Name
                 </label>
@@ -148,15 +116,15 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all duration-300"
-                  placeholder="Your Name"
+                  className="w-full px-0 py-4 bg-transparent border-b border-neutral-800 text-white placeholder-neutral-600 focus:border-amber-600 focus:outline-none transition-colors"
+                  placeholder="Your name"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-neutral-500 text-sm uppercase tracking-wider mb-3"
                 >
                   Email
                 </label>
@@ -167,15 +135,15 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-all duration-300"
-                  placeholder="your.email@example.com"
+                  className="w-full px-0 py-4 bg-transparent border-b border-neutral-800 text-white placeholder-neutral-600 focus:border-amber-600 focus:outline-none transition-colors"
+                  placeholder="your@email.com"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  className="block text-neutral-500 text-sm uppercase tracking-wider mb-3"
                 >
                   Message
                 </label>
@@ -185,30 +153,27 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 resize-none transition-all duration-300"
-                  placeholder="Your Message"
+                  rows={4}
+                  className="w-full px-0 py-4 bg-transparent border-b border-neutral-800 text-white placeholder-neutral-600 focus:border-amber-600 focus:outline-none transition-colors resize-none"
+                  placeholder="Your message..."
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg font-semibold hover:shadow-xl hover:shadow-emerald-500/50 hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
+                className="w-full py-5 bg-amber-600 text-neutral-950 font-medium text-sm uppercase tracking-wider hover:bg-amber-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span className="relative z-10">
-                  {status === 'loading'
-                    ? 'Sending...'
-                    : status === 'success'
-                      ? 'Message Sent!'
-                      : 'Send Message'}
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-teal-600 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                {status === 'loading'
+                  ? 'Sending...'
+                  : status === 'success'
+                    ? 'Message Sent!'
+                    : 'Send Message'}
               </button>
 
               {status === 'error' && (
-                <p className="text-red-600 dark:text-red-400 text-sm">
-                  There was an error sending your message. Please try again.
+                <p className="text-red-500 text-sm text-center">
+                  There was an error. Please try again.
                 </p>
               )}
             </form>

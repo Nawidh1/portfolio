@@ -4,20 +4,34 @@ import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
-import Experience from '@/components/Experience'
+import Education from '@/components/Experience'
 import Contact from '@/components/Contact'
+import RobotBuddy from '@/components/RobotBuddy'
+import CursorTrail from '@/components/CursorTrail'
+import FloatingCode from '@/components/FloatingCode'
+import InteractiveGrid from '@/components/InteractiveGrid'
+import ScrollProgress from '@/components/ScrollProgress'
+import MorphingBlob from '@/components/MorphingBlob'
+import SoundWave from '@/components/SoundWave'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen" suppressHydrationWarning>
+      <InteractiveGrid />
+      <MorphingBlob />
+      <FloatingCode />
+      <CursorTrail />
+      <ScrollProgress />
       <Header />
       <Hero />
       <About />
       <Skills />
       <Projects />
-      <Experience />
+      <Education />
       <Contact />
       <Footer />
+      <RobotBuddy />
+      <SoundWave />
     </main>
   )
 }

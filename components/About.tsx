@@ -2,64 +2,64 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 bg-white dark:bg-gray-800"
+      className="py-32 bg-neutral-950 relative"
     >
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent reveal">
-            About Me
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-600 mx-auto mb-12 reveal" />
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-20 items-start">
+          {/* Left Column - Title */}
+          <div className="reveal">
+            <p className="text-amber-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
+              About Me
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight">
+              Passionate about
+              <br />
+              <span className="font-bold">software</span>
+              <br />
+              <span className="font-bold">development</span>
+            </h2>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="reveal">
-              <div className="relative">
-                <div className="w-64 h-64 mx-auto bg-gradient-to-br from-emerald-500 via-teal-500 to-amber-500 rounded-full flex items-center justify-center text-white text-6xl font-bold shadow-2xl animate-float hover:scale-110 transition-transform duration-300">
-                  JD
-                </div>
-                <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-amber-400 rounded-full opacity-30 blur-2xl animate-pulse" />
-                <div className="absolute -top-2 -left-2 w-20 h-20 bg-emerald-400 rounded-full opacity-20 blur-xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="mt-16 grid grid-cols-2 gap-8">
+              <div className="border-t border-neutral-800 pt-6">
+                <div className="text-4xl font-light text-amber-500">MBO 4</div>
+                <div className="text-sm text-neutral-500 mt-2 uppercase tracking-wider">Year 3</div>
+              </div>
+              <div className="border-t border-neutral-800 pt-6">
+                <div className="text-4xl font-light text-amber-500">SD</div>
+                <div className="text-sm text-neutral-500 mt-2 uppercase tracking-wider">Software Dev</div>
               </div>
             </div>
+          </div>
 
-            <div className="space-y-6 reveal">
-              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                I&apos;m a passionate full-stack developer with a love for
-                creating innovative web applications. With expertise in modern
-                frameworks and technologies, I bring ideas to life through clean
-                code and thoughtful design.
-              </p>
-              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                My journey in web development started with a curiosity about how
-                things work on the internet. Over the years, I&apos;ve honed my
-                skills in both frontend and backend development, always staying
-                up-to-date with the latest trends and best practices.
-              </p>
-              <div className="flex flex-wrap gap-4 pt-4">
-                <div className="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg hover:scale-105 transition-transform duration-300 shadow-md">
-                  <span className="text-emerald-700 dark:text-emerald-400 font-semibold">
-                    5+ Years
+          {/* Right Column - Content */}
+          <div className="space-y-8 reveal">
+            <p className="text-xl text-neutral-300 leading-relaxed">
+              Hi, I&apos;m Nawid Haidari — a Software Development student at MBO 4, 
+              currently in my third year. I&apos;m focused on becoming a skilled 
+              application developer.
+            </p>
+            <p className="text-neutral-400 leading-relaxed">
+              I&apos;m learning to build web applications using modern technologies 
+              and frameworks. Every project is an opportunity to improve my skills 
+              and learn something new.
+            </p>
+            <p className="text-neutral-400 leading-relaxed">
+              I enjoy solving problems through code and creating applications that 
+              are both functional and user-friendly. I&apos;m always eager to take on 
+              new challenges and expand my knowledge.
+            </p>
+
+            <div className="pt-8 border-t border-neutral-800">
+              <p className="text-neutral-500 text-sm uppercase tracking-wider mb-4">Currently Learning</p>
+              <div className="flex flex-wrap gap-4">
+                {['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS'].map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-4 py-2 border border-neutral-800 text-neutral-400 text-sm hover:border-amber-600 hover:text-amber-500 transition-colors"
+                  >
+                    {skill}
                   </span>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Experience
-                  </p>
-                </div>
-                <div className="px-4 py-2 bg-teal-100 dark:bg-teal-900/30 rounded-lg hover:scale-105 transition-transform duration-300 shadow-md">
-                  <span className="text-teal-700 dark:text-teal-400 font-semibold">
-                    50+ Projects
-                  </span>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Completed
-                  </p>
-                </div>
-                <div className="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg hover:scale-105 transition-transform duration-300 shadow-md">
-                  <span className="text-amber-700 dark:text-amber-400 font-semibold">
-                    Full Stack
-                  </span>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Developer
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>
