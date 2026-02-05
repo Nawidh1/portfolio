@@ -53,9 +53,7 @@ export default function Projects() {
         description: 'A bilingual community website for an Islamic association featuring news, events, resources, and a full admin dashboard. Supports English and Farsi with dynamic content management.',
         image_url: null,
         images: [
-          '/projects/sadat-1.jpg',
-          '/projects/sadat-2.jpg',
-          '/projects/sadat-3.jpg',
+          '/projects/preview.jpg',
         ],
         technologies: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML'],
         github_url: 'https://github.com/Nawidh1/information',
@@ -68,8 +66,7 @@ export default function Projects() {
         description: 'My personal portfolio website built with Next.js and Tailwind CSS to showcase my projects and skills.',
         image_url: null,
         images: [
-          '/projects/portfolio-1.jpg',
-          '/projects/portfolio-2.jpg',
+          '/projects/preview.jpg',
         ],
         technologies: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript'],
         github_url: 'https://github.com/Nawidh1/portfolio',
@@ -134,18 +131,11 @@ export default function Projects() {
                             key={imgIndex} 
                             className="flex-shrink-0 w-full h-full snap-center relative bg-neutral-800 flex items-center justify-center"
                           >
-                            {/* Placeholder - shows until you add real images */}
-                            <div className="text-center text-neutral-600">
-                              <div className="text-4xl mb-2">🖼️</div>
-                              <p className="text-xs">Add image to</p>
-                              <p className="text-[10px] text-neutral-500">/public{img}</p>
-                            </div>
-                            {/* Uncomment below when you add real images */}
-                            {/* <img
+                            <img
                               src={img}
                               alt={`${project.title} screenshot ${imgIndex + 1}`}
                               className="w-full h-full object-cover"
-                            /> */}
+                            />
                           </div>
                         ))}
                       </div>
