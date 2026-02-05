@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import Link from 'next/link'
 
 interface Project {
   id: string
@@ -118,7 +119,8 @@ export default function Projects() {
                 className="group reveal"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="bg-neutral-900 border border-neutral-800 hover:border-amber-600/50 transition-all duration-300 overflow-hidden">
+                <Link href={`/projects/${project.id}`} className="block">
+                <div className="bg-neutral-900 border border-neutral-800 hover:border-amber-600/50 transition-all duration-300 overflow-hidden cursor-pointer">
                   {/* Project Images with Scroll */}
                   <div className="aspect-video bg-neutral-800 relative overflow-hidden">
                     {project.images && project.images.length > 0 ? (
@@ -222,6 +224,7 @@ export default function Projects() {
                     </div>
                   </div>
                 </div>
+                </Link>
               </div>
             ))}
           </div>
