@@ -6,7 +6,6 @@ import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
 import Education from '@/components/Experience'
 import Contact from '@/components/Contact'
-import PhotoGallery from '@/components/PhotoGallery'
 import RobotBuddy from '@/components/RobotBuddy'
 import CursorTrail from '@/components/CursorTrail'
 import FloatingCode from '@/components/FloatingCode'
@@ -28,7 +27,6 @@ export default function Home() {
       <About />
       <Skills />
       <Projects />
-      <PhotoGallery />
       <Education />
       <Contact />
       <Footer />
