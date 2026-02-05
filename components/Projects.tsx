@@ -8,6 +8,7 @@ interface Project {
   title: string
   description: string
   image_url: string | null
+  images?: string[]
   technologies: string[]
   github_url: string | null
   live_url: string | null
@@ -51,6 +52,11 @@ export default function Projects() {
         title: 'Sadat Victorian Association',
         description: 'A bilingual community website for an Islamic association featuring news, events, resources, and a full admin dashboard. Supports English and Farsi with dynamic content management.',
         image_url: null,
+        images: [
+          '/projects/sadat-1.jpg',
+          '/projects/sadat-2.jpg',
+          '/projects/sadat-3.jpg',
+        ],
         technologies: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML'],
         github_url: 'https://github.com/Nawidh1/information',
         live_url: null,
@@ -61,6 +67,10 @@ export default function Projects() {
         title: 'Portfolio Website',
         description: 'My personal portfolio website built with Next.js and Tailwind CSS to showcase my projects and skills.',
         image_url: null,
+        images: [
+          '/projects/portfolio-1.jpg',
+          '/projects/portfolio-2.jpg',
+        ],
         technologies: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript'],
         github_url: 'https://github.com/Nawidh1/portfolio',
         live_url: null,
@@ -112,20 +122,58 @@ export default function Projects() {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="bg-neutral-900 border border-neutral-800 hover:border-amber-600/50 transition-all duration-300 overflow-hidden">
-                  {/* Project Image/Placeholder */}
-                  <div className="aspect-video bg-neutral-800 flex items-center justify-center relative overflow-hidden">
-                    {project.image_url ? (
+                  {/* Project Images with Scroll */}
+                  <div className="aspect-video bg-neutral-800 relative overflow-hidden">
+                    {project.images && project.images.length > 0 ? (
+                      <div 
+                        className="flex h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                      >
+                        {project.images.map((img, imgIndex) => (
+                          <div 
+                            key={imgIndex} 
+                            className="flex-shrink-0 w-full h-full snap-center relative bg-neutral-800 flex items-center justify-center"
+                          >
+                            {/* Placeholder - shows until you add real images */}
+                            <div className="text-center text-neutral-600">
+                              <div className="text-4xl mb-2">🖼️</div>
+                              <p className="text-xs">Add image to</p>
+                              <p className="text-[10px] text-neutral-500">/public{img}</p>
+                            </div>
+                            {/* Uncomment below when you add real images */}
+                            {/* <img
+                              src={img}
+                              alt={`${project.title} screenshot ${imgIndex + 1}`}
+                              className="w-full h-full object-cover"
+                            /> */}
+                          </div>
+                        ))}
+                      </div>
+                    ) : project.image_url ? (
                       <img
                         src={project.image_url}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="text-6xl font-bold text-neutral-700 group-hover:text-amber-600/30 transition-colors">
-                        {project.title.charAt(0)}
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="text-6xl font-bold text-neutral-700 group-hover:text-amber-600/30 transition-colors">
+                          {project.title.charAt(0)}
+                        </div>
                       </div>
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent opacity-60" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent opacity-60 pointer-events-none" />
+                    {/* Scroll indicator dots */}
+                    {project.images && project.images.length > 1 && (
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                        {project.images.map((_, dotIndex) => (
+                          <div 
+                            key={dotIndex}
+                            className="w-1.5 h-1.5 rounded-full bg-white/50"
+                          />
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   {/* Project Info */}
