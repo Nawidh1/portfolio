@@ -119,8 +119,7 @@ export default function Projects() {
                 className="group reveal"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <Link href={`/projects/${project.id}`} className="block">
-                <div className="bg-neutral-900 border border-neutral-800 hover:border-amber-600/50 transition-all duration-300 overflow-hidden cursor-pointer">
+                <div className="bg-neutral-900 border border-neutral-800 hover:border-amber-600/50 transition-all duration-300 overflow-hidden">
                   {/* Project Images with Scroll */}
                   <div className="aspect-video bg-neutral-800 relative overflow-hidden">
                     {project.images && project.images.length > 0 ? (
@@ -195,6 +194,16 @@ export default function Projects() {
                     </div>
 
                     <div className="flex gap-6 pt-4 border-t border-neutral-800">
+                      <Link
+                        href={`/projects/${project.id}`}
+                        className="flex items-center gap-2 text-amber-500 hover:text-amber-400 transition-colors text-sm"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        View Details
+                      </Link>
                       {project.github_url && (
                         <a
                           href={project.github_url}
@@ -224,7 +233,6 @@ export default function Projects() {
                     </div>
                   </div>
                 </div>
-                </Link>
               </div>
             ))}
           </div>
