@@ -62,7 +62,7 @@ export default function CursorTrail() {
       {particles.map(particle => (
         <div
           key={particle.id}
-          className="absolute rounded-full bg-amber-500"
+          className="absolute rounded-full bg-emerald-500"
           style={{
             left: particle.x,
             top: particle.y,

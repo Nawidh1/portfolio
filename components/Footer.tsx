@@ -2,7 +2,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="py-12 bg-neutral-950 border-t border-neutral-900">
+    <footer className="py-12 bg-gradient-to-t from-neutral-950 via-emerald-950/10 to-neutral-950 border-t border-emerald-800/20">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-2xl font-light tracking-widest text-white">
@@ -14,7 +14,7 @@ export default function Footer() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-500 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider"
+              className="text-neutral-500 hover:text-emerald-500 transition-colors text-sm uppercase tracking-wider"
             >
               GitHub
             </a>
@@ -22,7 +22,7 @@ export default function Footer() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-500 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider"
+              className="text-neutral-500 hover:text-emerald-500 transition-colors text-sm uppercase tracking-wider"
             >
               LinkedIn
             </a>

@@ -40,7 +40,7 @@ export default function ScrollProgress() {
       {/* Top progress bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-neutral-900 z-[100]">
         <div
-          className="h-full bg-gradient-to-r from-amber-600 via-amber-500 to-amber-400 transition-all duration-150"
+          className="h-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 transition-all duration-150"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -49,11 +49,11 @@ export default function ScrollProgress() {
       <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-2">
         <div className="w-1 h-32 bg-neutral-800 rounded-full overflow-hidden">
           <div
-            className="w-full bg-amber-500 rounded-full transition-all duration-150"
+            className="w-full bg-emerald-500 rounded-full transition-all duration-150"
             style={{ height: `${progress}%` }}
           />
         </div>
-        <span className="text-xs text-amber-500 font-mono">{Math.round(progress)}%</span>
+        <span className="text-xs text-emerald-500 font-mono">{Math.round(progress)}%</span>
       </div>
     </>
   )

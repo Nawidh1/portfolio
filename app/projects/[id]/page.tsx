@@ -38,40 +38,49 @@ The admin dashboard allows authorized users to manage all content including news
       'Responsive design',
     ],
     images: [
-      '/projects/preview.jpg',
-      '/projects/sadat-2.jpg',
-      '/projects/sadat-3.jpg',
-      '/projects/sadat-4.jpg',
+      '/projects/sadat/1.png',
+      '/projects/sadat/2.png',
+      '/projects/sadat/3.png',
+      '/projects/sadat/4.png',
+      '/projects/sadat/5.png',
+      '/projects/sadat/6.png',
+      '/projects/sadat/7.png',
     ],
     technologies: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML'],
     github_url: 'https://github.com/Nawidh1/information',
     live_url: null,
   },
-  '2': {
-    id: '2',
-    title: 'Portfolio Website',
-    description: 'My personal portfolio website built with Next.js.',
-    longDescription: `This is my personal portfolio website that you're currently viewing! Built with modern web technologies to showcase my projects and skills.
+  '3': {
+    id: '3',
+    title: 'Kapper Omid',
+    description: 'A barbershop website with online reservation system and admin dashboard.',
+    longDescription: `Kapper Omid is a comprehensive barbershop website built with PHP and MySQL. The website provides a complete solution for managing appointments, services, and customer interactions.
 
-The site features interactive elements like the robot buddy, cursor trail, floating code particles, and smooth scroll animations to create an engaging user experience.
+The system includes user registration and authentication, allowing customers to create accounts, make reservations, view their booking history, and manage their profile. The admin dashboard provides full control over services, reservations, users, and website content.
 
-The design follows a dark theme with amber accents, creating a professional and modern look. The site is fully responsive and works great on all devices.`,
+Key features include an online reservation system with time slot availability checking, a services catalog, contact form with email notifications, user profiles, and a complete admin panel for managing all aspects of the business.`,
     features: [
-      'Interactive animations',
-      'Robot buddy assistant',
-      'Smooth scroll effects',
+      'Online reservation system',
+      'User authentication and profiles',
+      'Admin dashboard',
+      'Services management',
+      'Contact form with email notifications',
+      'Reservation history',
       'Responsive design',
-      'Project showcase',
-      'Contact section',
-      'Dark theme with amber accents',
+      'Multi-language support',
     ],
     images: [
-      '/projects/preview.jpg',
-      '/projects/portfolio-2.jpg',
-      '/projects/portfolio-3.jpg',
+      '/projects/omidtje/preview.png',
+      '/projects/omidtje/1.png',
+      '/projects/omidtje/2.png',
+      '/projects/omidtje/3.png',
+      '/projects/omidtje/4.png',
+      '/projects/omidtje/5.png',
+      '/projects/omidtje/6.png',
+      '/projects/omidtje/7.png',
     ],
-    technologies: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript'],
-    github_url: 'https://github.com/Nawidh1/portfolio',
+    technologies: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML', 'PHPMailer'],
+    github_url: null,
     live_url: null,
   },
 }
@@ -87,7 +96,7 @@ export default function ProjectPage() {
       <div className="min-h-screen bg-neutral-950 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
-          <Link href="/#projects" className="text-amber-500 hover:text-amber-400">
+          <Link href="/#projects" className="text-emerald-500 hover:text-emerald-400">
             ← Back to Projects
           </Link>
         </div>
@@ -96,19 +105,19 @@ export default function ProjectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950">
+    <div className="min-h-screen bg-gradient-to-b from-neutral-950 via-emerald-950/15 to-neutral-950">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/95 backdrop-blur-sm border-b border-neutral-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
           <Link
             href="/"
-            className="text-2xl font-light tracking-widest text-white hover:text-amber-500 transition-colors"
+            className="text-2xl font-light tracking-widest text-white hover:text-emerald-500 transition-colors"
           >
             NAWID<span className="font-bold">H</span>
           </Link>
           <Link
             href="/#projects"
-            className="text-neutral-400 hover:text-amber-500 transition-colors text-sm uppercase tracking-wider"
+            className="text-neutral-400 hover:text-emerald-500 transition-colors text-sm uppercase tracking-wider"
           >
             ← Back to Projects
           </Link>
@@ -120,7 +129,7 @@ export default function ProjectPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           {/* Title Section */}
           <div className="mb-12">
-            <p className="text-amber-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
+            <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
               Project Details
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6">
@@ -130,7 +139,7 @@ export default function ProjectPage() {
               {project.technologies.map((tech, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 border border-amber-600/50 text-amber-500 text-sm"
+                  className="px-4 py-2 border border-emerald-600/50 text-emerald-500 text-sm"
                 >
                   {tech}
                 </span>
@@ -141,11 +150,11 @@ export default function ProjectPage() {
           {/* Image Gallery */}
           <div className="mb-16">
             {/* Main Image */}
-            <div className="aspect-video bg-neutral-900 border border-neutral-800 overflow-hidden mb-4">
+            <div className="aspect-video bg-gradient-to-br from-neutral-900 via-emerald-950/10 to-neutral-900 border border-emerald-800/30 overflow-hidden mb-4 flex items-center justify-center p-2">
               <img
                 src={project.images[selectedImage]}
                 alt={`${project.title} screenshot ${selectedImage + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain border border-neutral-700 rounded-sm"
               />
             </div>
             
@@ -158,14 +167,14 @@ export default function ProjectPage() {
                     onClick={() => setSelectedImage(index)}
                     className={`flex-shrink-0 w-32 h-20 overflow-hidden border-2 transition-all ${
                       selectedImage === index
-                        ? 'border-amber-500'
+                        ? 'border-emerald-500'
                         : 'border-neutral-800 hover:border-neutral-600'
                     }`}
                   >
                     <img
                       src={img}
                       alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover border border-neutral-700"
                     />
                   </button>
                 ))}
@@ -191,7 +200,7 @@ export default function ProjectPage() {
                 <ul className="space-y-3">
                   {project.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3 text-neutral-400">
-                      <span className="text-amber-500 mt-1">→</span>
+                      <span className="text-emerald-500 mt-1">→</span>
                       {feature}
                     </li>
                   ))}
@@ -207,7 +216,7 @@ export default function ProjectPage() {
                       href={project.github_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 px-6 py-4 bg-neutral-900 border border-neutral-800 hover:border-amber-600/50 text-neutral-300 hover:text-white transition-all"
+                      className="flex items-center gap-3 px-6 py-4 bg-neutral-900 border border-neutral-800 hover:border-emerald-600/50 text-neutral-300 hover:text-white transition-all"
                     >
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
@@ -220,7 +229,7 @@ export default function ProjectPage() {
                       href={project.live_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 px-6 py-4 bg-amber-600 hover:bg-amber-500 text-neutral-950 font-medium transition-all"
+                      className="flex items-center gap-3 px-6 py-4 bg-emerald-600 hover:bg-emerald-500 text-neutral-950 font-medium transition-all"
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

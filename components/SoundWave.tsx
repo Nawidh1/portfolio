@@ -28,7 +28,7 @@ export default function SoundWave() {
       {bars.map((height, i) => (
         <div
           key={i}
-          className="w-1 bg-amber-500 rounded-full transition-all duration-150"
+          className="w-1 bg-emerald-500 rounded-full transition-all duration-150"
           style={{ height: `${height}%` }}
         />
       ))}

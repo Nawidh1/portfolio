@@ -105,12 +105,12 @@ export default function RobotBuddy() {
     <div className="fixed bottom-6 right-6 z-50">
       {/* Speech bubble */}
       <div
-        className={`absolute bottom-full right-0 mb-2 px-4 py-2 bg-amber-500 text-neutral-950 text-sm font-medium rounded-lg whitespace-nowrap transition-all duration-300 ${
+        className={`absolute bottom-full right-0 mb-2 px-4 py-2 bg-emerald-500 text-neutral-950 text-sm font-medium rounded-lg whitespace-nowrap transition-all duration-300 ${
           showMessage ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
         }`}
       >
         {message}
-        <div className="absolute -bottom-1 right-6 w-3 h-3 bg-amber-500 rotate-45" />
+        <div className="absolute -bottom-1 right-6 w-3 h-3 bg-emerald-500 rotate-45" />
       </div>
 
       {/* Robot */}
@@ -126,7 +126,7 @@ export default function RobotBuddy() {
         <div className="relative w-16 h-20 transition-transform duration-300 hover:scale-110">
           {/* Antenna */}
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <div className={`w-2 h-2 rounded-full bg-amber-500 ${isWaving ? 'animate-ping' : 'animate-pulse'}`} />
+            <div className={`w-2 h-2 rounded-full bg-emerald-500 ${isWaving ? 'animate-ping' : 'animate-pulse'}`} />
             <div className="w-0.5 h-3 bg-neutral-600" />
           </div>
 
@@ -136,12 +136,12 @@ export default function RobotBuddy() {
             <div className="absolute inset-1 bg-neutral-900 rounded-lg flex items-center justify-center gap-2">
               {/* Eyes */}
               <div
-                className={`relative w-3 h-3 bg-amber-500 rounded-full transition-all duration-100 ${
+                className={`relative w-3 h-3 bg-emerald-500 rounded-full transition-all duration-100 ${
                   isBlinking ? 'scale-y-[0.1]' : ''
                 }`}
               >
                 <div
-                  className="absolute w-1.5 h-1.5 bg-amber-300 rounded-full"
+                  className="absolute w-1.5 h-1.5 bg-emerald-300 rounded-full"
                   style={{
                     transform: `translate(${eyeOffset.x}px, ${eyeOffset.y}px)`,
                     top: '25%',
@@ -150,12 +150,12 @@ export default function RobotBuddy() {
                 />
               </div>
               <div
-                className={`relative w-3 h-3 bg-amber-500 rounded-full transition-all duration-100 ${
+                className={`relative w-3 h-3 bg-emerald-500 rounded-full transition-all duration-100 ${
                   isBlinking ? 'scale-y-[0.1]' : ''
                 }`}
               >
                 <div
-                  className="absolute w-1.5 h-1.5 bg-amber-300 rounded-full"
+                  className="absolute w-1.5 h-1.5 bg-emerald-300 rounded-full"
                   style={{
                     transform: `translate(${eyeOffset.x}px, ${eyeOffset.y}px)`,
                     top: '25%',
@@ -166,7 +166,7 @@ export default function RobotBuddy() {
             </div>
             
             {/* Scan line effect */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/5 to-transparent animate-scan opacity-50" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/5 to-transparent animate-scan opacity-50" />
           </div>
 
           {/* Body */}
@@ -174,7 +174,7 @@ export default function RobotBuddy() {
             {/* Chest lights */}
             <div className="absolute top-2 left-1/2 -translate-x-1/2 flex gap-1">
               <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-              <div className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" style={{ animationDelay: '0.5s' }} />
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" style={{ animationDelay: '0.5s' }} />
               <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" style={{ animationDelay: '1s' }} />
             </div>
           </div>

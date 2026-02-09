@@ -91,7 +91,7 @@ export default function FloatingCode() {
       {particles.map(particle => (
         <div
           key={particle.id}
-          className="absolute font-mono text-amber-500 select-none"
+          className="absolute font-mono text-emerald-500 select-none"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,

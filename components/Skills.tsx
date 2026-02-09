@@ -20,11 +20,11 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-32 bg-neutral-900 relative"
+      className="py-32 bg-gradient-to-b from-neutral-950 via-emerald-950/10 to-neutral-950 relative"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="text-center mb-20 reveal">
-          <p className="text-amber-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
+          <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
             Skills
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white">
@@ -39,8 +39,8 @@ export default function Skills() {
               className="group reveal"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="bg-neutral-950 border border-neutral-800 p-10 h-full hover:border-amber-600/50 transition-colors">
-                <div className="text-6xl font-light text-neutral-800 group-hover:text-amber-600/30 transition-colors mb-8">
+              <div className="bg-gradient-to-br from-neutral-950 via-emerald-950/10 to-neutral-950 border border-emerald-800/30 p-10 h-full hover:border-emerald-600/50 transition-colors">
+                <div className="text-6xl font-light text-neutral-800 group-hover:text-emerald-600/30 transition-colors mb-8">
                   0{index + 1}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">
@@ -58,7 +58,7 @@ export default function Skills() {
                       <span className="text-neutral-400 group-hover/item:text-white transition-colors">
                         {skill}
                       </span>
-                      <span className="w-2 h-2 bg-amber-600 opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                      <span className="w-2 h-2 bg-emerald-600 opacity-0 group-hover/item:opacity-100 transition-opacity" />
                     </div>
                   ))}
                 </div>

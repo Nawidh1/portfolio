@@ -47,11 +47,11 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-32 bg-neutral-950 relative">
+    <section id="contact" className="py-32 bg-gradient-to-b from-neutral-950 via-emerald-950/20 to-neutral-950 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-20">
           <div className="reveal">
-            <p className="text-amber-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
+            <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
               Contact
             </p>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-8">
@@ -68,7 +68,7 @@ export default function Contact() {
             <div className="space-y-8">
               <div className="border-t border-neutral-800 pt-8">
                 <p className="text-neutral-500 text-sm uppercase tracking-wider mb-2">Email</p>
-                <a href="mailto:nawid@example.com" className="text-white text-xl hover:text-amber-500 transition-colors">
+                <a href="mailto:nawid@example.com" className="text-white text-xl hover:text-emerald-500 transition-colors">
                   nawid@example.com
                 </a>
               </div>
@@ -83,7 +83,7 @@ export default function Contact() {
                     href="https://github.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-neutral-400 hover:text-amber-500 transition-colors text-sm"
+                    className="text-neutral-400 hover:text-emerald-500 transition-colors text-sm"
                   >
                     GitHub
                   </a>
@@ -91,7 +91,7 @@ export default function Contact() {
                     href="https://linkedin.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-neutral-400 hover:text-amber-500 transition-colors text-sm"
+                    className="text-neutral-400 hover:text-emerald-500 transition-colors text-sm"
                   >
                     LinkedIn
                   </a>
@@ -116,7 +116,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-0 py-4 bg-transparent border-b border-neutral-800 text-white placeholder-neutral-600 focus:border-amber-600 focus:outline-none transition-colors"
+                  className="w-full px-0 py-4 bg-transparent border-b border-neutral-800 text-white placeholder-neutral-600 focus:border-emerald-600 focus:outline-none transition-colors"
                   placeholder="Your name"
                 />
               </div>
@@ -135,7 +135,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-0 py-4 bg-transparent border-b border-neutral-800 text-white placeholder-neutral-600 focus:border-amber-600 focus:outline-none transition-colors"
+                  className="w-full px-0 py-4 bg-transparent border-b border-neutral-800 text-white placeholder-neutral-600 focus:border-emerald-600 focus:outline-none transition-colors"
                   placeholder="your@email.com"
                 />
               </div>
@@ -162,7 +162,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-5 bg-amber-600 text-neutral-950 font-medium text-sm uppercase tracking-wider hover:bg-amber-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-5 bg-emerald-600 text-neutral-950 font-medium text-sm uppercase tracking-wider hover:bg-emerald-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {status === 'loading'
                   ? 'Sending...'
