@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 
 interface Project {
@@ -18,12 +18,61 @@ interface Project {
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([])
   const [loading, setLoading] = useState(true)
+  const [activeImageIndex, setActiveImageIndex] = useState<{ [key: string]: number }>({})
+  const [canScroll, setCanScroll] = useState<{ [key: string]: { left: boolean; right: boolean } }>({})
+  const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
 
   useEffect(() => {
     // Use sample projects directly - these are my actual projects
-    setProjects(getSampleProjects())
+    const sampleProjects = getSampleProjects()
+    setProjects(sampleProjects)
+    // Initialize active image index for all projects
+    const initialIndexes: { [key: string]: number } = {}
+    const initialScrollState: { [key: string]: { left: boolean; right: boolean } } = {}
+    sampleProjects.forEach(project => {
+      if (project.images && project.images.length > 0) {
+        initialIndexes[project.id] = 0
+        // Initially, can't scroll left (at start), can scroll right if more than 1 image
+        initialScrollState[project.id] = {
+          left: false,
+          right: project.images.length > 1
+        }
+      }
+    })
+    setActiveImageIndex(initialIndexes)
+    setCanScroll(initialScrollState)
     setLoading(false)
   }, [])
+
+  const handleScroll = (projectId: string, container: HTMLDivElement) => {
+    const scrollLeft = container.scrollLeft
+    const imageWidth = container.scrollWidth / container.children.length
+    const currentIndex = Math.round(scrollLeft / imageWidth)
+    setActiveImageIndex(prev => ({ ...prev, [projectId]: currentIndex }))
+    
+    // Update scroll state
+    const canScrollLeft = scrollLeft > 10
+    const canScrollRight = scrollLeft < container.scrollWidth - container.clientWidth - 10
+    setCanScroll(prev => ({
+      ...prev,
+      [projectId]: { left: canScrollLeft, right: canScrollRight }
+    }))
+  }
+
+  const scrollImage = (projectId: string, direction: 'left' | 'right') => {
+    const container = scrollRefs.current[projectId]
+    if (!container) return
+
+    const imageWidth = container.clientWidth
+    const currentScroll = container.scrollLeft
+    const scrollAmount = direction === 'left' ? -imageWidth : imageWidth
+    const newScroll = currentScroll + scrollAmount
+
+    container.scrollTo({
+      left: newScroll,
+      behavior: 'smooth'
+    })
+  }
 
   function getSampleProjects(): Project[] {
     return [
@@ -71,7 +120,7 @@ export default function Projects() {
 
   if (loading) {
     return (
-      <section id="projects" className="py-32 bg-gradient-to-b from-neutral-950 via-emerald-950/15 to-neutral-950">
+      <section id="projects" className="py-16 bg-gradient-to-b from-neutral-950 via-emerald-950/15 to-neutral-950">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex justify-center">
             <div className="w-8 h-8 border border-emerald-600 border-t-transparent animate-spin" />
@@ -82,9 +131,9 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-32 bg-neutral-950 relative">
+    <section id="projects" className="py-16 bg-neutral-950 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-20 gap-8 reveal">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-8 reveal text-center lg:text-left">
           <div>
             <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
               Portfolio
@@ -93,7 +142,7 @@ export default function Projects() {
               My <span className="font-bold">Projects</span>
             </h2>
           </div>
-          <p className="text-neutral-400 max-w-md">
+          <p className="text-neutral-400 max-w-md mx-auto lg:mx-0">
             Projects I&apos;ve built while learning. Each one helped me grow as a developer.
           </p>
         </div>
@@ -113,27 +162,91 @@ export default function Projects() {
               >
                 <div className="bg-gradient-to-br from-neutral-900 via-emerald-950/10 to-neutral-900 border border-emerald-800/30 hover:border-emerald-600/50 transition-all duration-300 overflow-hidden flex flex-col h-full">
                   {/* Project Images with Scroll */}
-                  <div className="aspect-video bg-neutral-800 relative overflow-hidden">
+                  <div className="aspect-video bg-neutral-800 relative overflow-hidden group/image-container">
                     {project.images && project.images.length > 0 ? (
-                      <div 
-                        className="flex h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                      >
-                        {project.images.map((img, imgIndex) => (
-                          <div 
-                            key={imgIndex} 
-                            className="flex-shrink-0 w-full h-full snap-center relative bg-gradient-to-br from-neutral-800 via-emerald-950/10 to-neutral-800"
-                            style={{ minWidth: '100%', width: '100%' }}
-                          >
-                            <img
-                              src={img}
-                              alt={`${project.title} screenshot ${imgIndex + 1}`}
-                              className="w-full h-full object-contain border border-neutral-700"
-                              style={{ display: 'block' }}
-                            />
+                      <>
+                        <div 
+                          ref={(el) => { 
+                            scrollRefs.current[project.id] = el
+                            if (el && !canScroll[project.id]) {
+                              // Initialize scroll state
+                              const canScrollLeft = el.scrollLeft > 10
+                              const canScrollRight = el.scrollLeft < el.scrollWidth - el.clientWidth - 10
+                              setCanScroll(prev => ({
+                                ...prev,
+                                [project.id]: { left: canScrollLeft, right: canScrollRight }
+                              }))
+                            }
+                          }}
+                          className="flex h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth"
+                          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                          onScroll={(e) => handleScroll(project.id, e.currentTarget)}
+                        >
+                          {project.images.map((img, imgIndex) => (
+                            <div 
+                              key={imgIndex} 
+                              className="flex-shrink-0 w-full h-full snap-center relative bg-gradient-to-br from-neutral-800 via-emerald-950/10 to-neutral-800 flex items-center justify-center p-2"
+                              style={{ minWidth: '100%', width: '100%' }}
+                            >
+                              <img
+                                src={img}
+                                alt={`${project.title} screenshot ${imgIndex + 1}`}
+                                className="max-w-full max-h-full w-auto h-auto object-contain"
+                                style={{ display: 'block' }}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                        
+                        {/* Scroll Arrow Buttons */}
+                        {project.images.length > 1 && (
+                          <>
+                            {/* Left Arrow */}
+                            <button
+                              onClick={() => scrollImage(project.id, 'left')}
+                              className={`absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-neutral-900/90 backdrop-blur-sm hover:bg-emerald-600/80 text-white p-2 rounded-full transition-all duration-200 opacity-0 group-hover/image-container:opacity-100 ${
+                                canScroll[project.id]?.left !== false ? 'cursor-pointer hover:scale-110' : 'opacity-30 cursor-not-allowed'
+                              }`}
+                              aria-label="Scroll left"
+                              disabled={canScroll[project.id]?.left === false}
+                            >
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                              </svg>
+                            </button>
+                            
+                            {/* Right Arrow */}
+                            <button
+                              onClick={() => scrollImage(project.id, 'right')}
+                              className={`absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-neutral-900/90 backdrop-blur-sm hover:bg-emerald-600/80 text-white p-2 rounded-full transition-all duration-200 opacity-0 group-hover/image-container:opacity-100 ${
+                                canScroll[project.id]?.right !== false ? 'cursor-pointer hover:scale-110' : 'opacity-30 cursor-not-allowed'
+                              }`}
+                              aria-label="Scroll right"
+                              disabled={canScroll[project.id]?.right === false}
+                            >
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          </>
+                        )}
+                        
+                        {/* Scroll indicator dots */}
+                        {project.images.length > 1 && (
+                          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-neutral-900/60 backdrop-blur-sm px-2 py-1 rounded-full">
+                            {project.images.map((_, dotIndex) => (
+                              <div 
+                                key={dotIndex}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                  (activeImageIndex[project.id] ?? 0) === dotIndex
+                                    ? 'bg-emerald-500 w-6'
+                                    : 'bg-white/50'
+                                }`}
+                              />
+                            ))}
                           </div>
-                        ))}
-                      </div>
+                        )}
+                      </>
                     ) : project.image_url ? (
                       <img
                         src={project.image_url}
@@ -148,17 +261,6 @@ export default function Projects() {
                       </div>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent opacity-60 pointer-events-none" />
-                    {/* Scroll indicator dots */}
-                    {project.images && project.images.length > 1 && (
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-                        {project.images.map((_, dotIndex) => (
-                          <div 
-                            key={dotIndex}
-                            className="w-1.5 h-1.5 rounded-full bg-white/50"
-                          />
-                        ))}
-                      </div>
-                    )}
                   </div>
 
                   {/* Project Info */}
@@ -190,7 +292,7 @@ export default function Projects() {
                     <div className="flex gap-6 pt-4 border-t border-neutral-800 mt-auto">
                       <Link
                         href={`/projects/${project.id}`}
-                        className="flex items-center gap-2 text-amber-500 hover:text-amber-400 transition-colors text-sm"
+                        className="flex items-center gap-2 text-emerald-500 hover:text-emerald-400 transition-colors text-sm"
                       >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -233,7 +335,7 @@ export default function Projects() {
         )}
 
         {/* Add Project Note */}
-        <div className="mt-16 text-center reveal">
+        <div className="mt-12 text-center reveal">
           <p className="text-neutral-600 text-sm">
             More projects coming soon as I continue learning and building
           </p>

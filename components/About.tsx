@@ -4,12 +4,12 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-32 bg-gradient-to-b from-neutral-950 via-emerald-950/15 to-neutral-950 relative"
+      className="py-16 bg-gradient-to-b from-neutral-950 via-emerald-950/15 to-neutral-950 relative"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Column - Title */}
-          <div className="reveal">
+          <div className="reveal text-center lg:text-left">
             <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
               About Me
             </p>
@@ -22,7 +22,7 @@ export default function About() {
             </h2>
 
             {/* Profile Photo - Mobile/Tablet */}
-            <div className="mt-8 lg:hidden">
+            <div className="mt-8 lg:hidden flex justify-center">
               <img
                 src="/profile2.jpg"
                 alt="Nawid Haidari"
@@ -34,7 +34,7 @@ export default function About() {
               />
             </div>
 
-            <div className="mt-16 grid grid-cols-2 gap-8">
+            <div className="mt-12 grid grid-cols-2 gap-8">
               <div className="border-t border-neutral-800 pt-6">
                 <div className="text-4xl font-light text-emerald-500">MBO 4</div>
                 <div className="text-sm text-neutral-500 mt-2 uppercase tracking-wider">Year 3</div>
@@ -47,7 +47,7 @@ export default function About() {
           </div>
 
           {/* Right Column - Content */}
-          <div className="space-y-8 reveal">
+          <div className="space-y-8 reveal text-center lg:text-left">
             {/* Profile Photo - Desktop */}
             <div className="hidden lg:block mb-8">
               <img
@@ -78,7 +78,7 @@ export default function About() {
 
             <div className="pt-8 border-t border-neutral-800">
               <p className="text-neutral-500 text-sm uppercase tracking-wider mb-4">Currently Learning</p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                 {['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS'].map((skill) => (
                   <span
                     key={skill}

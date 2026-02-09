@@ -27,12 +27,12 @@ export default function Experience() {
   return (
     <section
       id="education"
-      className="py-32 bg-gradient-to-b from-neutral-950 via-emerald-950/15 to-neutral-950 relative"
+      className="py-16 bg-gradient-to-b from-neutral-950 via-emerald-950/15 to-neutral-950 relative"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Education */}
-        <div className="grid lg:grid-cols-12 gap-20 mb-32">
-          <div className="lg:col-span-4 reveal">
+        <div className="grid lg:grid-cols-12 gap-12 mb-16">
+          <div className="lg:col-span-4 reveal text-center lg:text-left">
             <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
               Education
             </p>
@@ -47,7 +47,7 @@ export default function Experience() {
             {education.map((edu, index) => (
               <div
                 key={index}
-                className="group reveal"
+                className="group reveal text-center lg:text-left"
               >
                 <div className="py-12 border-t border-neutral-800">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
@@ -62,11 +62,11 @@ export default function Experience() {
                     </span>
                   </div>
                   
-                  <p className="text-neutral-400 mb-6 max-w-2xl">
+                  <p className="text-neutral-400 mb-6 max-w-2xl mx-auto lg:mx-0">
                     {edu.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-x-8 gap-y-2">
+                  <div className="flex flex-wrap gap-x-8 gap-y-2 justify-center lg:justify-start">
                     {edu.highlights.map((highlight, i) => (
                       <div key={i} className="flex items-center gap-3 text-neutral-500 text-sm">
                         <span className="w-1 h-1 bg-emerald-600" />
@@ -82,7 +82,7 @@ export default function Experience() {
 
         {/* What I'm Learning */}
         <div className="reveal">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
               Growth
             </p>

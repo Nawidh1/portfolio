@@ -27,8 +27,8 @@ export default function Hero() {
       <div className="absolute right-12 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-emerald-600/30 to-transparent hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-32">
-          <div className={`space-y-8 ${isMounted ? 'animate-slide-up' : 'opacity-0'}`}>
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+          <div className={`space-y-8 text-center lg:text-left ${isMounted ? 'animate-slide-up' : 'opacity-0'}`}>
             <div className="space-y-4">
               <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium">
                 Software Developer Student
@@ -40,12 +40,12 @@ export default function Hero() {
               </h1>
             </div>
 
-            <p className="text-neutral-400 text-lg max-w-md leading-relaxed">
+            <p className="text-neutral-400 text-lg max-w-md leading-relaxed mx-auto lg:mx-0">
               MBO Software Development student passionate about building web applications. 
               Learning and growing every day to become a skilled developer.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
               <a
                 href="#projects"
                 className="px-8 py-4 bg-emerald-600 text-neutral-950 font-medium text-sm uppercase tracking-wider hover:bg-emerald-500 transition-colors"

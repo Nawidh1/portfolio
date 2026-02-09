@@ -20,10 +20,10 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="py-32 bg-gradient-to-b from-neutral-950 via-emerald-950/10 to-neutral-950 relative"
+      className="py-16 bg-gradient-to-b from-neutral-950 via-emerald-950/10 to-neutral-950 relative"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-20 reveal">
+        <div className="text-center mb-12 reveal">
           <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
             Skills
           </p>
