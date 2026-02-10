@@ -2,14 +2,14 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="py-12 bg-gradient-to-t from-neutral-950 via-emerald-950/10 to-neutral-950 border-t border-emerald-800/20">
+    <footer className="py-12 ">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
           <div className="text-2xl font-light tracking-widest text-white">
             NAWID<span className="font-bold">H</span>
           </div>
 
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-8 justify-center">
             <a
               href="https://github.com"
               target="_blank"

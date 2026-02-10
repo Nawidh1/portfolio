@@ -47,7 +47,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-b from-neutral-950 via-emerald-950/20 to-neutral-950 relative overflow-hidden">
+    <section id="contact" className="py-16 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />

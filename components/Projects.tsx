@@ -120,7 +120,7 @@ export default function Projects() {
 
   if (loading) {
     return (
-      <section id="projects" className="py-16 bg-gradient-to-b from-neutral-950 via-emerald-950/15 to-neutral-950">
+      <section id="projects" className="py-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex justify-center">
             <div className="w-8 h-8 border border-emerald-600 border-t-transparent animate-spin" />
@@ -131,7 +131,7 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-16 bg-neutral-950 relative">
+    <section id="projects" className="py-16 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-8 reveal text-center lg:text-left">
           <div>

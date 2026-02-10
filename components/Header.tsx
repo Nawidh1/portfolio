@@ -37,7 +37,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-gradient-to-r from-neutral-950/95 via-emerald-950/20 to-neutral-950/95 backdrop-blur-sm border-b border-emerald-800/20'
+          ? 'bg-gradient-to-r from-neutral-900/95 via-emerald-950/20 to-neutral-900/95 backdrop-blur-sm'
           : 'bg-transparent'
       }`}
     >
@@ -79,12 +79,12 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         <div className={`lg:hidden overflow-hidden transition-all duration-500 ${isMobileMenuOpen ? 'max-h-96 pb-8' : 'max-h-0'}`}>
-          <div className="flex flex-col gap-6 pt-4">
+          <div className="flex flex-col gap-6 pt-4 items-center">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-neutral-400 hover:text-white transition-colors uppercase tracking-[0.2em] text-sm"
+                className="text-neutral-400 hover:text-white transition-colors uppercase tracking-[0.2em] text-sm text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}

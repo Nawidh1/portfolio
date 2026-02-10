@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative bg-gradient-to-b from-neutral-950 via-emerald-950/20 to-neutral-950"
+      className="min-h-screen flex items-center justify-center relative"
     >
       {/* Subtle grain texture */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -20,7 +20,7 @@ export default function Hero() {
       }} />
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-neutral-950" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent" />
 
       {/* Decorative lines */}
       <div className="absolute left-12 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-emerald-600/30 to-transparent hidden lg:block" />
