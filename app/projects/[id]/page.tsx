@@ -150,31 +150,69 @@ export default function ProjectPage() {
           {/* Image Gallery */}
           <div className="mb-16">
             {/* Main Image */}
-            <div className="aspect-video bg-gradient-to-br from-neutral-900 via-emerald-950/10 to-neutral-900 border border-emerald-800/30 overflow-hidden mb-4 flex items-center justify-center p-2">
+            <div className="relative aspect-video bg-gradient-to-br from-neutral-900 via-emerald-950/10 to-neutral-900 border border-emerald-800/30 rounded-xl overflow-hidden mb-4 flex items-center justify-center p-2 group">
               <img
                 src={project.images[selectedImage]}
                 alt={`${project.title} screenshot ${selectedImage + 1}`}
-                className="w-full h-full object-contain border border-neutral-700 rounded-sm"
+                className="w-full h-full object-contain rounded-sm"
               />
+
+              {/* Navigation Arrows */}
+              {project.images.length > 1 && (
+                <>
+                  {/* Left Arrow */}
+                  <button
+                    onClick={() => setSelectedImage(prev => Math.max(0, prev - 1))}
+                    className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-neutral-900/90 backdrop-blur-md border border-neutral-700/50 hover:bg-emerald-600 hover:border-emerald-500 text-white p-3 rounded-full transition-all duration-300 ${
+                      selectedImage > 0 ? 'opacity-90 cursor-pointer hover:scale-110 hover:shadow-lg hover:shadow-emerald-500/20' : 'opacity-20 cursor-not-allowed'
+                    }`}
+                    disabled={selectedImage === 0}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+
+                  {/* Right Arrow */}
+                  <button
+                    onClick={() => setSelectedImage(prev => Math.min(project.images.length - 1, prev + 1))}
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-neutral-900/90 backdrop-blur-md border border-neutral-700/50 hover:bg-emerald-600 hover:border-emerald-500 text-white p-3 rounded-full transition-all duration-300 ${
+                      selectedImage < project.images.length - 1 ? 'opacity-90 cursor-pointer hover:scale-110 hover:shadow-lg hover:shadow-emerald-500/20' : 'opacity-20 cursor-not-allowed'
+                    }`}
+                    disabled={selectedImage === project.images.length - 1}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                  {/* Image Counter */}
+                  <div className="absolute top-4 right-4 z-10 bg-neutral-900/80 backdrop-blur-sm px-4 py-1.5 rounded-full border border-neutral-700/50">
+                    <span className="text-xs font-mono text-neutral-300">
+                      {selectedImage + 1} / {project.images.length}
+                    </span>
+                  </div>
+                </>
+              )}
             </div>
             
             {/* Thumbnail Strip */}
             {project.images.length > 1 && (
-              <div className="flex gap-4 overflow-x-auto pb-2">
+              <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
                 {project.images.map((img, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`flex-shrink-0 w-32 h-20 overflow-hidden border-2 transition-all ${
+                    className={`flex-shrink-0 w-28 h-18 overflow-hidden rounded-lg border-2 transition-all duration-300 ${
                       selectedImage === index
-                        ? 'border-emerald-500'
-                        : 'border-neutral-800 hover:border-neutral-600'
+                        ? 'border-emerald-500 shadow-lg shadow-emerald-500/20 scale-105'
+                        : 'border-neutral-800 hover:border-neutral-600 opacity-60 hover:opacity-100'
                     }`}
                   >
                     <img
                       src={img}
                       alt={`Thumbnail ${index + 1}`}
-                      className="w-full h-full object-cover border border-neutral-700"
+                      className="w-full h-full object-cover"
                     />
                   </button>
                 ))}
