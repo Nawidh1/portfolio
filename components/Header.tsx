@@ -2,11 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const rafRef = useRef<number | null>(null)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,13 +26,17 @@ export default function Header() {
     }
   }, [])
 
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [pathname])
+
   const navItems = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#education', label: 'Education' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/skills', label: 'Skills' },
+    { href: '/projects', label: 'Projects' },
+    { href: '/experience', label: 'Experience' },
+    { href: '/contact', label: 'Contact' },
   ]
 
   return (
@@ -44,7 +50,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           <Link
-            href="#home"
+            href="/"
             className="text-2xl font-light tracking-widest text-white hover:text-emerald-500 transition-colors"
           >
             NAWID<span className="font-bold">H</span>
@@ -56,7 +62,11 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-xs font-medium text-neutral-400 hover:text-white transition-colors uppercase tracking-[0.2em]"
+                className={`text-xs font-medium transition-colors uppercase tracking-[0.2em] ${
+                  pathname === item.href || (item.href === '/projects' && pathname.startsWith('/projects/'))
+                    ? 'text-emerald-500'
+                    : 'text-neutral-400 hover:text-white'
+                }`}
               >
                 {item.label}
               </Link>
@@ -84,7 +94,11 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-neutral-400 hover:text-white transition-colors uppercase tracking-[0.2em] text-sm text-center"
+                className={`transition-colors uppercase tracking-[0.2em] text-sm text-center ${
+                  pathname === item.href || (item.href === '/projects' && pathname.startsWith('/projects/'))
+                    ? 'text-emerald-500'
+                    : 'text-neutral-400 hover:text-white'
+                }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}

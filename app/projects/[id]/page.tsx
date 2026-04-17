@@ -96,7 +96,7 @@ export default function ProjectPage() {
       <div className="min-h-screen bg-neutral-950 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Project Not Found</h1>
-          <Link href="/#projects" className="text-emerald-500 hover:text-emerald-400">
+          <Link href="/projects" className="text-emerald-500 hover:text-emerald-400">
             ← Back to Projects
           </Link>
         </div>
@@ -116,7 +116,7 @@ export default function ProjectPage() {
             NAWID<span className="font-bold">H</span>
           </Link>
           <Link
-            href="/#projects"
+            href="/projects"
             className="text-neutral-400 hover:text-emerald-500 transition-colors text-sm uppercase tracking-wider"
           >
             ← Back to Projects

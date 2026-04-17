@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 export default function Hero() {
   const [isMounted, setIsMounted] = useState(false)
@@ -46,18 +47,18 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
-              <a
-                href="#projects"
+              <Link
+                href="/projects"
                 className="px-8 py-4 bg-emerald-600 text-neutral-950 font-medium text-sm uppercase tracking-wider hover:bg-emerald-500 transition-colors"
               >
                 View Projects
-              </a>
-              <a
-                href="#contact"
+              </Link>
+              <Link
+                href="/contact"
                 className="px-8 py-4 border border-neutral-700 text-white font-medium text-sm uppercase tracking-wider hover:border-emerald-600 hover:text-emerald-500 transition-colors"
               >
                 Get In Touch
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -91,10 +92,10 @@ export default function Hero() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-          <a href="#about" className="flex flex-col items-center gap-4 text-neutral-500 hover:text-emerald-500 transition-colors group">
+          <Link href="/about" className="flex flex-col items-center gap-4 text-neutral-500 hover:text-emerald-500 transition-colors group">
             <span className="text-xs uppercase tracking-[0.3em]">Scroll</span>
             <div className="w-px h-16 bg-gradient-to-b from-emerald-600 to-transparent group-hover:h-20 transition-all" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
