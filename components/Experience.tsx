@@ -4,303 +4,195 @@ import { useEffect, useState, useRef } from 'react'
 
 export default function Experience() {
   const [isVisible, setIsVisible] = useState(false)
-  const [activeStep, setActiveStep] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsVisible(true) },
-      { threshold: 0.08 }
+      { threshold: 0.1 }
     )
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
 
-  // Auto-rotate through journey steps
-  useEffect(() => {
-    if (!isVisible) return
-    const timer = setInterval(() => {
-      setActiveStep(prev => (prev + 1) % 4)
-    }, 4000)
-    return () => clearInterval(timer)
-  }, [isVisible])
-
   const journey = [
-    { year: '2022', title: 'Started MBO 4', desc: 'Began my Software Development studies, learning the fundamentals of programming and web development.', icon: '🎓' },
-    { year: '2023', title: 'First Projects', desc: 'Built my first web applications using HTML, CSS, JavaScript and PHP. Learned database design with MySQL.', icon: '🚀' },
-    { year: '2024', title: 'Modern Stack', desc: 'Moved to React, Next.js and Tailwind CSS. Started learning Node.js and working with APIs.', icon: '⚡' },
-    { year: '2025', title: 'Growing', desc: 'Currently in Year 3, building full-stack applications and expanding my skills every day.', icon: '🔥' },
+    { year: '2022', title: 'Started MBO 4', desc: 'Began Software Development studies. Learned fundamentals of programming, logic, and web development basics.', icon: '🎓' },
+    { year: '2023', title: 'First Web Projects', desc: 'Built applications using HTML, CSS, JavaScript, and PHP. Dived into database design with MySQL.', icon: '💻' },
+    { year: '2024', title: 'Modern Tech Stack', desc: 'Transitioned to React, Next.js, and Tailwind CSS. Explored Node.js and RESTful APIs.', icon: '⚡' },
+    { year: '2025', title: 'Full-Stack Focus', desc: 'Year 3 student. Building complex full-stack apps and constantly expanding my software engineering skills.', icon: '🚀' },
   ]
 
   const stats = [
     { label: 'School', value: 'MBO 4' },
-    { label: 'Program', value: 'Software Development' },
-    { label: 'Year', value: '3rd Year' },
-    { label: 'Period', value: '2022 — Present' },
-    { label: 'Focus', value: 'Application Development' },
-    { label: 'Status', value: 'Active Student' },
+    { label: 'Program', value: 'Software Dev' },
+    { label: 'Status', value: '3rd Year Student' },
   ]
 
-  const focus = [
-    { title: 'Frontend', desc: 'React, Next.js, Tailwind CSS', pct: 40 },
-    { title: 'Backend', desc: 'Node.js, PHP, SQL', pct: 30 },
-    { title: 'Tools', desc: 'Git, GitHub, VS Code', pct: 20 },
-    { title: 'Design', desc: 'Figma, UI/UX basics', pct: 10 },
+  const skills = [
+    { name: 'Frontend', level: 90 },
+    { name: 'Backend', level: 75 },
+    { name: 'Database', level: 70 },
+    { name: 'UI/UX', level: 60 },
   ]
 
   return (
-    <section ref={sectionRef} id="education" className="py-28 relative overflow-hidden">
-      <style jsx>{`
-        @keyframes expandWidth { from { width: 0; } to { width: 100%; } }
-        @keyframes progressFill { from { width: 0%; } }
-        @keyframes tickIn {
-          0% { transform: scale(0) rotate(-45deg); opacity: 0; }
-          60% { transform: scale(1.2) rotate(5deg); }
-          100% { transform: scale(1) rotate(0deg); opacity: 1; }
-        }
-      `}</style>
+    <section ref={sectionRef} id="education" className="py-32 relative bg-neutral-950/50">
+      {/* Background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[20%] right-[10%] w-96 h-96 bg-emerald-500/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[10%] left-[5%] w-[30rem] h-[30rem] bg-emerald-600/5 rounded-full blur-[150px]" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-
-        {/* ── Header ── */}
-        <div className="mb-20">
-          <div className="flex items-center gap-4 mb-8">
-            <div
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateX(0)' : 'translateX(-20px)',
-                transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s',
-              }}
-              className="flex items-center gap-3"
-            >
-              <div className="w-3 h-3 rounded-full bg-emerald-500 relative">
-                <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-40" />
-              </div>
-              <span className="text-emerald-500 text-xs font-mono uppercase tracking-[0.4em]">Education</span>
-            </div>
-            <div
-              className="flex-1 h-px"
-              style={{
-                background: 'linear-gradient(90deg, #10b981, transparent)',
-                animation: isVisible ? 'expandWidth 1.5s ease-out 0.3s forwards' : 'none',
-                width: 0,
-              }}
-            />
+        
+        {/* Header */}
+        <div className="mb-24 flex flex-col items-center text-center">
+          <div 
+            className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'all 0.6s cubic-bezier(0.16,1,0.3,1)'
+            }}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-emerald-400 text-sm font-mono tracking-widest uppercase">My Background</span>
           </div>
-          <div className="overflow-hidden">
-            <h2
-              className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1]"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(100%)',
-                transition: 'all 1s cubic-bezier(0.16,1,0.3,1) 0.25s',
-              }}
-            >
-              My Journey
-            </h2>
-          </div>
+          
+          <h2 
+            className="text-5xl md:text-7xl font-black text-white tracking-tight"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'all 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s'
+            }}
+          >
+            Education & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">Experience</span>
+          </h2>
         </div>
 
-        {/* ── Info Grid ── */}
-        <div className="grid md:grid-cols-3 gap-px bg-neutral-800/30 rounded-2xl overflow-hidden mb-20"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-            transition: 'all 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s',
-          }}
-        >
-          {stats.map((stat, i) => (
-            <div
-              key={stat.label}
-              className="group bg-neutral-950 p-6 md:p-8 hover:bg-neutral-900/80 transition-colors duration-300"
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          {/* Timeline Section (Left) */}
+          <div className="lg:col-span-7 relative">
+            <div className="absolute left-8 top-4 bottom-4 w-px bg-gradient-to-b from-emerald-500/50 via-emerald-500/20 to-transparent hidden md:block" />
+            
+            <div className="space-y-12">
+              {journey.map((item, i) => (
+                <div 
+                  key={i} 
+                  className="relative pl-0 md:pl-24 group"
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                    transition: `all 0.7s cubic-bezier(0.16,1,0.3,1) ${0.2 + i * 0.15}s`
+                  }}
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute left-8 -translate-x-1/2 mt-1.5 w-4 h-4 rounded-full bg-neutral-900 border-2 border-emerald-500 hidden md:flex items-center justify-center group-hover:scale-150 group-hover:bg-emerald-500 transition-all duration-300 z-10">
+                    <div className="w-1 h-1 rounded-full bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  
+                  {/* Card */}
+                  <div className="bg-neutral-900/40 border border-neutral-800/60 hover:border-emerald-500/40 rounded-2xl p-6 md:p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-900/80 hover:shadow-[0_8px_30px_rgb(16,185,129,0.05)]">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-neutral-800/80 text-2xl border border-neutral-700/50 group-hover:scale-110 transition-transform duration-300">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <div className="text-emerald-500 font-mono text-sm mb-1">{item.year}</div>
+                        <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">{item.title}</h3>
+                      </div>
+                    </div>
+                    <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bento Box Section (Right) */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map((stat, i) => (
+                <div 
+                  key={i}
+                  className={`bg-neutral-900/40 border border-neutral-800/60 rounded-2xl p-6 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 ${i === 2 ? 'col-span-2' : ''}`}
+                  style={{
+                    opacity: isVisible ? 1 : 0,
+                    transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                    transition: `all 0.6s cubic-bezier(0.16,1,0.3,1) ${0.4 + i * 0.1}s`
+                  }}
+                >
+                  <p className="text-neutral-500 text-xs font-mono uppercase tracking-wider mb-2">{stat.label}</p>
+                  <p className="text-white font-semibold text-lg">{stat.value}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Skills Progress */}
+            <div 
+              className="bg-neutral-900/40 border border-neutral-800/60 rounded-2xl p-6 md:p-8 hover:border-emerald-500/30 transition-colors duration-300"
               style={{
                 opacity: isVisible ? 1 : 0,
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                transition: `all 0.6s cubic-bezier(0.16,1,0.3,1) ${0.5 + i * 0.07}s`,
+                transition: 'all 0.6s cubic-bezier(0.16,1,0.3,1) 0.7s'
               }}
             >
-              <div className="text-[10px] text-neutral-600 font-mono uppercase tracking-widest mb-2 group-hover:text-emerald-500/60 transition-colors duration-300">
-                {stat.label}
-              </div>
-              <div className="text-lg md:text-xl font-semibold text-neutral-200 group-hover:text-white transition-colors duration-300">
-                {stat.value}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Timeline ── */}
-        <div className="mb-24">
-          <h3
-            className="text-2xl font-bold text-white mb-10"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transition: 'opacity 0.8s ease 0.7s',
-            }}
-          >
-            Timeline
-          </h3>
-
-          {/* Progress bar */}
-          <div
-            className="relative h-1 bg-neutral-800 rounded-full mb-10 overflow-hidden"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transition: 'opacity 0.8s ease 0.8s',
-            }}
-          >
-            <div
-              className="absolute left-0 top-0 h-full bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full transition-all duration-700 ease-out"
-              style={{ width: `${((activeStep + 1) / journey.length) * 100}%` }}
-            />
-            {/* Step dots on the bar */}
-            {journey.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveStep(i)}
-                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-10"
-                style={{ left: `${((i + 0.5) / journey.length) * 100}%` }}
-              >
-                <div
-                  className="w-4 h-4 rounded-full border-2 transition-all duration-500 cursor-pointer"
-                  style={{
-                    borderColor: i <= activeStep ? '#10b981' : '#404040',
-                    background: i <= activeStep ? '#10b981' : '#171717',
-                    transform: i === activeStep ? 'scale(1.4)' : 'scale(1)',
-                    boxShadow: i === activeStep ? '0 0 15px rgba(16,185,129,0.4)' : 'none',
-                  }}
-                />
-              </button>
-            ))}
-          </div>
-
-          {/* Year labels */}
-          <div
-            className="flex mb-10"
-            style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.8s ease 0.9s' }}
-          >
-            {journey.map((step, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveStep(i)}
-                className="flex-1 text-center cursor-pointer"
-              >
-                <span
-                  className="text-sm font-mono transition-all duration-300"
-                  style={{
-                    color: i === activeStep ? '#10b981' : i <= activeStep ? '#a3a3a3' : '#525252',
-                    fontWeight: i === activeStep ? 700 : 400,
-                  }}
-                >
-                  {step.year}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          {/* Active step content */}
-          <div className="relative overflow-hidden rounded-2xl border border-neutral-800/50 bg-neutral-900/40 min-h-[180px]">
-            {journey.map((step, i) => (
-              <div
-                key={i}
-                className="absolute inset-0 p-8 md:p-12 flex items-center transition-all duration-600"
-                style={{
-                  opacity: activeStep === i ? 1 : 0,
-                  transform: activeStep === i ? 'translateX(0)' : activeStep > i ? 'translateX(-40px)' : 'translateX(40px)',
-                  pointerEvents: activeStep === i ? 'auto' : 'none',
-                  transition: 'all 0.5s cubic-bezier(0.16,1,0.3,1)',
-                }}
-              >
-                <div className="flex items-start gap-6 md:gap-10">
-                  <div className="text-5xl shrink-0">{step.icon}</div>
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-emerald-500 font-mono text-sm">{step.year}</span>
-                      <div className="w-8 h-px bg-emerald-500/30" />
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                <span className="w-8 h-px bg-emerald-500/50"></span>
+                Technical Focus
+              </h3>
+              
+              <div className="space-y-6">
+                {skills.map((skill, i) => (
+                  <div key={i} className="group">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm font-medium text-neutral-300 group-hover:text-emerald-400 transition-colors">{skill.name}</span>
+                      <span className="text-xs font-mono text-emerald-500">{skill.level}%</span>
                     </div>
-                    <h4 className="text-2xl md:text-3xl font-bold text-white mb-3">{step.title}</h4>
-                    <p className="text-neutral-400 leading-relaxed max-w-xl">{step.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Focus Distribution ── */}
-        <div>
-          <h3
-            className="text-2xl font-bold text-white mb-10"
-            style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.8s ease 1s' }}
-          >
-            Current Focus
-          </h3>
-
-          <div className="space-y-6">
-            {focus.map((item, i) => (
-              <div
-                key={item.title}
-                className="group"
-                style={{
-                  opacity: isVisible ? 1 : 0,
-                  transform: isVisible ? 'translateX(0)' : 'translateX(-30px)',
-                  transition: `all 0.7s cubic-bezier(0.16,1,0.3,1) ${1.1 + i * 0.1}s`,
-                }}
-              >
-                <div className="flex items-center gap-6 md:gap-10">
-                  {/* Percentage */}
-                  <div className="w-16 text-right shrink-0">
-                    <span className="text-2xl md:text-3xl font-black text-emerald-500 group-hover:scale-110 inline-block transition-transform duration-300">
-                      {item.pct}%
-                    </span>
-                  </div>
-
-                  {/* Bar + Info */}
-                  <div className="flex-1">
-                    <div className="flex items-baseline justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-white group-hover:text-emerald-400 transition-colors duration-300">
-                        {item.title}
-                      </h4>
-                      <span className="text-xs text-neutral-600 hidden md:block">{item.desc}</span>
-                    </div>
-                    <div className="h-2 bg-neutral-800 rounded-full overflow-hidden">
-                      <div
+                    <div className="h-2 w-full bg-neutral-800 rounded-full overflow-hidden">
+                      <div 
                         className="h-full bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full relative"
-                        style={{
-                          width: isVisible ? `${item.pct}%` : '0%',
-                          transition: `width 1.2s cubic-bezier(0.16,1,0.3,1) ${1.3 + i * 0.15}s`,
+                        style={{ 
+                          width: isVisible ? `${skill.level}%` : '0%',
+                          transition: `width 1.5s cubic-bezier(0.16,1,0.3,1) ${0.8 + i * 0.1}s`
                         }}
                       >
-                        {/* Shimmer */}
-                        <div
-                          className="absolute inset-0 rounded-full"
-                          style={{
-                            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-                            backgroundSize: '200% 100%',
-                            animationName: isVisible ? 'shimmer' : 'none',
-                            animationDuration: '2s',
-                            animationTimingFunction: 'ease',
-                            animationIterationCount: 'infinite',
-                            animationDelay: `${1.5 + i * 0.15}s`,
-                          }}
-                        />
+                        <div className="absolute top-0 right-0 bottom-0 w-10 bg-gradient-to-r from-transparent to-white/20 animate-pulse" />
                       </div>
                     </div>
-                    <p className="text-xs text-neutral-600 mt-1 md:hidden">{item.desc}</p>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Extra Bento Card */}
+            <div 
+              className="bg-gradient-to-br from-emerald-900/20 to-neutral-900/40 border border-emerald-500/20 hover:border-emerald-500/40 rounded-2xl p-6 md:p-8 relative overflow-hidden group transition-all duration-300 hover:-translate-y-1"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 0.6s cubic-bezier(0.16,1,0.3,1) 0.9s'
+              }}
+            >
+              <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl group-hover:bg-emerald-500/20 transition-colors" />
+              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Continuous Learning</h3>
+              <p className="text-sm text-neutral-400 leading-relaxed relative z-10 group-hover:text-neutral-300 transition-colors">
+                Currently expanding my knowledge in system architecture, cloud deployment, and advanced patterns to build more robust applications.
+              </p>
+            </div>
+
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes shimmer {
-          0% { background-position: 200% 0; }
-          100% { background-position: -200% 0; }
-        }
-      `}</style>
     </section>
   )
 }

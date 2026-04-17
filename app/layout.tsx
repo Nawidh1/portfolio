@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ScrollRevealScript from "@/components/ScrollRevealScript";
 import HydrationFix from "@/components/HydrationFix";
+import { siteName, siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,8 +16,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Professional Portfolio | Full Stack Developer",
-  description: "Portfolio website showcasing my projects, skills, and experience as a full stack developer",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Professional Portfolio | Full Stack Developer",
+    template: `%s | ${siteName}`,
+  },
+  description:
+    "Portfolio website showcasing my projects, skills, and experience as a full stack developer.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: "Professional Portfolio | Full Stack Developer",
+    description:
+      "Portfolio website showcasing my projects, skills, and experience as a full stack developer.",
+    siteName,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Professional Portfolio | Full Stack Developer",
+    description:
+      "Portfolio website showcasing my projects, skills, and experience as a full stack developer.",
+  },
 };
 
 export default function RootLayout({
