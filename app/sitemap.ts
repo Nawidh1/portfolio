@@ -10,6 +10,7 @@ const publicRoutes = [
   "/contact",
   "/projects/1",
   "/projects/3",
+  "/projects/4",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

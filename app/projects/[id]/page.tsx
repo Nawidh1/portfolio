@@ -3,92 +3,12 @@
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { useState } from 'react'
-
-interface ProjectDetail {
-  id: string
-  title: string
-  description: string
-  longDescription: string
-  features: string[]
-  images: string[]
-  technologies: string[]
-  github_url: string | null
-  live_url: string | null
-}
-
-const projectsData: Record<string, ProjectDetail> = {
-  '1': {
-    id: '1',
-    title: 'Sadat Victorian Association',
-    description: 'A bilingual community website for an Islamic association.',
-    longDescription: `This project is a full-featured community website built for the Sadat Victorian Association. 
-    
-The website serves as a central hub for the community, providing information about events, news, resources, and ways to get involved. 
-
-One of the key features is the bilingual support - users can switch between English and Farsi, making the content accessible to a wider audience.
-
-The admin dashboard allows authorized users to manage all content including news articles, events, resources, and homepage sections without needing to edit code.`,
-    features: [
-      'Bilingual support (English & Farsi)',
-      'Dynamic content management',
-      'Admin dashboard with authentication',
-      'News and events management',
-      'Resources library',
-      'Contact form',
-      'Responsive design',
-    ],
-    images: [
-      '/projects/sadat/1.png',
-      '/projects/sadat/2.png',
-      '/projects/sadat/3.png',
-      '/projects/sadat/4.png',
-      '/projects/sadat/5.png',
-      '/projects/sadat/6.png',
-      '/projects/sadat/7.png',
-    ],
-    technologies: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML'],
-    github_url: 'https://github.com/Nawidh1/information',
-    live_url: null,
-  },
-  '3': {
-    id: '3',
-    title: 'Kapper Omid',
-    description: 'A barbershop website with online reservation system and admin dashboard.',
-    longDescription: `Kapper Omid is a comprehensive barbershop website built with PHP and MySQL. The website provides a complete solution for managing appointments, services, and customer interactions.
-
-The system includes user registration and authentication, allowing customers to create accounts, make reservations, view their booking history, and manage their profile. The admin dashboard provides full control over services, reservations, users, and website content.
-
-Key features include an online reservation system with time slot availability checking, a services catalog, contact form with email notifications, user profiles, and a complete admin panel for managing all aspects of the business.`,
-    features: [
-      'Online reservation system',
-      'User authentication and profiles',
-      'Admin dashboard',
-      'Services management',
-      'Contact form with email notifications',
-      'Reservation history',
-      'Responsive design',
-      'Multi-language support',
-    ],
-    images: [
-      '/projects/omidtje/preview.png',
-      '/projects/omidtje/1.png',
-      '/projects/omidtje/2.png',
-      '/projects/omidtje/3.png',
-      '/projects/omidtje/4.png',
-      '/projects/omidtje/5.png',
-      '/projects/omidtje/6.png',
-      '/projects/omidtje/7.png',
-    ],
-    technologies: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML', 'PHPMailer'],
-    github_url: null,
-    live_url: null,
-  },
-}
+import { getProjectById } from '@/lib/projects'
 
 export default function ProjectPage() {
   const params = useParams()
   const projectId = params.id as string
-  const project = projectsData[projectId]
+  const project = getProjectById(projectId)
   const [selectedImage, setSelectedImage] = useState(0)
 
   if (!project) {
@@ -151,11 +71,17 @@ export default function ProjectPage() {
           <div className="mb-16">
             {/* Main Image */}
             <div className="relative aspect-video bg-gradient-to-br from-neutral-900 via-emerald-950/10 to-neutral-900 border border-emerald-800/30 rounded-xl overflow-hidden mb-4 flex items-center justify-center p-2 group">
-              <img
-                src={project.images[selectedImage]}
-                alt={`${project.title} screenshot ${selectedImage + 1}`}
-                className="w-full h-full object-contain rounded-sm"
-              />
+              {project.images.length > 0 ? (
+                <img
+                  src={project.images[selectedImage]}
+                  alt={`${project.title} screenshot ${selectedImage + 1}`}
+                  className="w-full h-full object-contain rounded-sm"
+                />
+              ) : (
+                <div className="text-8xl font-bold text-neutral-700">
+                  {project.title.charAt(0)}
+                </div>
+              )}
 
               {/* Navigation Arrows */}
               {project.images.length > 1 && (

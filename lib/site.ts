@@ -1,4 +1,4 @@
-const fallbackSiteUrl = "https://example.com";
+const fallbackSiteUrl = "https://werk-nawid-dev.nl";
 
 function normalizeUrl(url: string): string {
   return url.endsWith("/") ? url.slice(0, -1) : url;

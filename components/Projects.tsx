@@ -2,46 +2,28 @@
 
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
-
-interface Project {
-  id: string
-  title: string
-  description: string
-  image_url: string | null
-  images?: string[]
-  technologies: string[]
-  github_url: string | null
-  live_url: string | null
-  created_at: string
-}
+import { portfolioProjects } from '@/lib/projects'
 
 export default function Projects() {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [loading, setLoading] = useState(true)
+  const projects = portfolioProjects
   const [activeImageIndex, setActiveImageIndex] = useState<{ [key: string]: number }>({})
   const [canScroll, setCanScroll] = useState<{ [key: string]: { left: boolean; right: boolean } }>({})
   const scrollRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
 
   useEffect(() => {
-    // Use sample projects directly - these are my actual projects
-    const sampleProjects = getSampleProjects()
-    setProjects(sampleProjects)
-    // Initialize active image index for all projects
     const initialIndexes: { [key: string]: number } = {}
     const initialScrollState: { [key: string]: { left: boolean; right: boolean } } = {}
-    sampleProjects.forEach(project => {
-      if (project.images && project.images.length > 0) {
+    portfolioProjects.forEach((project) => {
+      if (project.images.length > 0) {
         initialIndexes[project.id] = 0
-        // Initially, can't scroll left (at start), can scroll right if more than 1 image
         initialScrollState[project.id] = {
           left: false,
-          right: project.images.length > 1
+          right: project.images.length > 1,
         }
       }
     })
     setActiveImageIndex(initialIndexes)
     setCanScroll(initialScrollState)
-    setLoading(false)
   }, [])
 
   const handleScroll = (projectId: string, container: HTMLDivElement) => {
@@ -72,62 +54,6 @@ export default function Projects() {
       left: newScroll,
       behavior: 'smooth'
     })
-  }
-
-  function getSampleProjects(): Project[] {
-    return [
-      {
-        id: '1',
-        title: 'Sadat Victorian Association',
-        description: 'A bilingual community website for an Islamic association featuring news, events, resources, and a full admin dashboard. Supports English and Farsi with dynamic content management.',
-        image_url: null,
-        images: [
-          '/projects/sadat/1.png',
-          '/projects/sadat/2.png',
-          '/projects/sadat/3.png',
-          '/projects/sadat/4.png',
-          '/projects/sadat/5.png',
-          '/projects/sadat/6.png',
-          '/projects/sadat/7.png',
-        ],
-        technologies: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML'],
-        github_url: 'https://github.com/Nawidh1/information',
-        live_url: null,
-        created_at: new Date().toISOString(),
-      },
-      {
-        id: '3',
-        title: 'Kapper Omid',
-        description: 'A barbershop website with online reservation system, user accounts, services management, and admin dashboard. Built with PHP and MySQL.',
-        image_url: null,
-        images: [
-          '/projects/omidtje/preview.png',
-          '/projects/omidtje/1.png',
-          '/projects/omidtje/2.png',
-          '/projects/omidtje/3.png',
-          '/projects/omidtje/4.png',
-          '/projects/omidtje/5.png',
-          '/projects/omidtje/6.png',
-          '/projects/omidtje/7.png',
-        ],
-        technologies: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML', 'PHPMailer'],
-        github_url: null,
-        live_url: null,
-        created_at: new Date().toISOString(),
-      },
-    ]
-  }
-
-  if (loading) {
-    return (
-      <section id="projects" className="py-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex justify-center">
-            <div className="w-8 h-8 border border-emerald-600 border-t-transparent animate-spin" />
-          </div>
-        </div>
-      </section>
-    )
   }
 
   return (
@@ -163,7 +89,7 @@ export default function Projects() {
                 <div className="bg-gradient-to-br from-neutral-900 via-emerald-950/10 to-neutral-900 border border-emerald-800/30 hover:border-emerald-600/50 transition-all duration-300 overflow-hidden flex flex-col h-full">
                   {/* Project Images with Scroll */}
                   <div className="aspect-video bg-neutral-800 relative overflow-hidden group/image-container">
-                    {project.images && project.images.length > 0 ? (
+                    {project.images.length > 0 ? (
                       <>
                         <div 
                           ref={(el) => { 
@@ -247,12 +173,6 @@ export default function Projects() {
                           </div>
                         )}
                       </>
-                    ) : project.image_url ? (
-                      <img
-                        src={project.image_url}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
                         <div className="text-6xl font-bold text-neutral-700 group-hover:text-emerald-600/30 transition-colors">
