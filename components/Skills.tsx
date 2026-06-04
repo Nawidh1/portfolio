@@ -37,7 +37,6 @@ export default function Skills() {
         { name: 'PHP', color: '#777BB4' },
         { name: 'SQL', color: '#4479A1' },
         { name: 'Supabase', color: '#3ECF8E' },
-        { name: 'REST APIs', color: '#10b981' },
       ],
     },
     {
