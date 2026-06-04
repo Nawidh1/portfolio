@@ -18,14 +18,6 @@ export default function Footer() {
             >
               GitHub
             </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-500 hover:text-emerald-500 transition-colors text-sm uppercase tracking-wider"
-            >
-              LinkedIn
-            </a>
           </div>
 
           <p className="text-neutral-600 text-sm">
