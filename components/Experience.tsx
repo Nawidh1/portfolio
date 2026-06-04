@@ -29,10 +29,10 @@ export default function Experience() {
   ]
 
   const skills = [
-    { name: 'Frontend', level: 90 },
-    { name: 'Backend', level: 75 },
-    { name: 'Database', level: 70 },
-    { name: 'UI/UX', level: 60 },
+    { name: 'Frontend', level: 50 },
+    { name: 'Backend', level: 30 },
+    { name: 'Database', level: 30 },
+    { name: 'UI/UX', level: 50 },
   ]
 
   return (
