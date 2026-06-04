@@ -47,7 +47,6 @@ export default function Skills() {
         { name: 'Git', color: '#F05032' },
         { name: 'GitHub', color: '#e2e2e2' },
         { name: 'Cursor', color: '#e2e2e2' },
-        { name: 'npm', color: '#CB3837' },
       ],
     },
   ]

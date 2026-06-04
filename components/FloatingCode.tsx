@@ -29,7 +29,6 @@ const codeSymbols = [
   'for',
   '0x',
   '01',
-  'npm',
   'git',
   '/**/',
   '::',
