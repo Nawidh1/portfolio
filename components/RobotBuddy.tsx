@@ -13,13 +13,13 @@ export default function RobotBuddy() {
   const rafRef = useRef<number | null>(null)
 
   const messages = [
-    "Hello! 👋",
-    "Nice to meet you!",
-    "Check out my projects!",
-    "I love coding!",
-    "Welcome!",
-    "Let's build something!",
-    "🤖 Beep boop!",
+    "Hallo! 👋",
+    "Leuk je te ontmoeten!",
+    "Bekijk mijn projecten!",
+    "Ik hou van coderen!",
+    "Welkom!",
+    "Laten we iets bouwen!",
+    "🤖 Piep piep!",
   ]
 
   useEffect(() => {
@@ -117,7 +117,7 @@ export default function RobotBuddy() {
       <button
         onClick={handleClick}
         className="group relative cursor-pointer focus:outline-none"
-        aria-label="Robot buddy"
+        aria-label="Robotvriendje"
       >
         {/* Glow effect */}
         <div className="absolute inset-0 bg-amber-500/20 rounded-full blur-xl group-hover:bg-amber-500/40 transition-all" />

@@ -32,10 +32,10 @@ export default function Header() {
 
   const navItems = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/skills', label: 'Skills' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/experience', label: 'Experience' },
+    { href: '/about', label: 'Over mij' },
+    { href: '/skills', label: 'Vaardigheden' },
+    { href: '/projects', label: 'Projecten' },
+    { href: '/experience', label: 'Ervaring' },
     { href: '/contact', label: 'Contact' },
   ]
 
@@ -77,7 +77,7 @@ export default function Header() {
           <button
             className="lg:hidden text-white p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label="Menu openen"
           >
             <div className="w-6 h-6 flex flex-col justify-center gap-1.5">
               <span className={`block h-px w-full bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''}`}></span>

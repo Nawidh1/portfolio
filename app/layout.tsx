@@ -18,11 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Professional Portfolio | Full Stack Developer",
+    default: "Portfolio | Software Developer",
     template: `%s | ${siteName}`,
   },
   description:
-    "Portfolio website showcasing my projects, skills, and experience as a full stack developer.",
+    "Portfolio van Nawid Haidari — projecten, vaardigheden en ervaring als software developer.",
   alternates: {
     canonical: "/",
   },
@@ -40,17 +40,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Professional Portfolio | Full Stack Developer",
+    title: "Portfolio | Software Developer",
     description:
-      "Portfolio website showcasing my projects, skills, and experience as a full stack developer.",
+      "Portfolio van Nawid Haidari — projecten, vaardigheden en ervaring als software developer.",
     siteName,
-    locale: "en_US",
+    locale: "nl_NL",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Professional Portfolio | Full Stack Developer",
+    title: "Portfolio | Software Developer",
     description:
-      "Portfolio website showcasing my projects, skills, and experience as a full stack developer.",
+      "Portfolio van Nawid Haidari — projecten, vaardigheden en ervaring als software developer.",
   },
 };
 
@@ -60,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="nl" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning

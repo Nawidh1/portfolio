@@ -16,21 +16,21 @@ export const portfolioProjects: PortfolioProject[] = [
     id: "1",
     title: "Sadat Victorian Association",
     description:
-      "A bilingual community website for an Islamic association featuring news, events, resources, and a full admin dashboard. Supports English and Farsi with dynamic content management.",
-    longDescription: `This project is a full-featured community website built for the Sadat Victorian Association.
+      "Tweetalige communitywebsite voor een islamitische vereniging met nieuws, evenementen, bronnen en een volledig admin-dashboard. Engels en Farsi met dynamisch contentbeheer.",
+    longDescription: `Dit project is een uitgebreide communitywebsite voor de Sadat Victorian Association.
 
-The website serves as a central hub for the community, providing information about events, news, resources, and ways to get involved.
+De website fungeert als centraal punt voor de gemeenschap, met informatie over evenementen, nieuws, bronnen en manieren om betrokken te raken.
 
-One of the key features is the bilingual support - users can switch between English and Farsi, making the content accessible to a wider audience.
+Een belangrijk onderdeel is de tweetalige ondersteuning — gebruikers kunnen wisselen tussen Engels en Farsi, zodat de content voor een breder publiek toegankelijk is.
 
-The admin dashboard allows authorized users to manage all content including news articles, events, resources, and homepage sections without needing to edit code.`,
+Het admin-dashboard laat bevoegde gebruikers alle content beheren, inclusief nieuwsartikelen, evenementen, bronnen en homepage-secties, zonder code aan te passen.`,
     features: [
-      "Bilingual support (English & Farsi)",
-      "Dynamic content management",
-      "Admin dashboard with authentication",
-      "News and events management",
-      "Resources library",
-      "Contact form",
+      "Tweetalige ondersteuning (Engels & Farsi)",
+      "Dynamisch contentbeheer",
+      "Admin-dashboard met authenticatie",
+      "Nieuws- en evenementenbeheer",
+      "Bronnenbibliotheek",
+      "Contactformulier",
       "Responsive design",
     ],
     images: [
@@ -51,21 +51,21 @@ The admin dashboard allows authorized users to manage all content including news
     id: "3",
     title: "Kapper Omid",
     description:
-      "A barbershop website with online reservation system, user accounts, services management, and admin dashboard. Built with PHP and MySQL.",
-    longDescription: `Kapper Omid is a comprehensive barbershop website built with PHP and MySQL. The website provides a complete solution for managing appointments, services, and customer interactions.
+      "Kapperswebsite met online reserveringssysteem, gebruikersaccounts, dienstenbeheer en admin-dashboard. Gebouwd met PHP en MySQL.",
+    longDescription: `Kapper Omid is een complete kapperswebsite gebouwd met PHP en MySQL. De website biedt een volledige oplossing voor het beheren van afspraken, diensten en klantcontact.
 
-The system includes user registration and authentication, allowing customers to create accounts, make reservations, view their booking history, and manage their profile. The admin dashboard provides full control over services, reservations, users, and website content.
+Het systeem bevat gebruikersregistratie en authenticatie, zodat klanten accounts kunnen aanmaken, reserveringen kunnen maken, hun boekingsgeschiedenis kunnen bekijken en hun profiel kunnen beheren. Het admin-dashboard geeft volledige controle over diensten, reserveringen, gebruikers en websitecontent.
 
-Key features include an online reservation system with time slot availability checking, a services catalog, contact form with email notifications, user profiles, and a complete admin panel for managing all aspects of the business.`,
+Belangrijke functies zijn een online reserveringssysteem met beschikbaarheidscontrole, een dienstencatalogus, contactformulier met e-mailnotificaties, gebruikersprofielen en een volledig adminpaneel.`,
     features: [
-      "Online reservation system",
-      "User authentication and profiles",
-      "Admin dashboard",
-      "Services management",
-      "Contact form with email notifications",
-      "Reservation history",
+      "Online reserveringssysteem",
+      "Gebruikersauthenticatie en profielen",
+      "Admin-dashboard",
+      "Dienstenbeheer",
+      "Contactformulier met e-mailnotificaties",
+      "Reserveringsgeschiedenis",
       "Responsive design",
-      "Multi-language support",
+      "Meertalige ondersteuning",
     ],
     images: [
       "/projects/omidtje/preview.png",
@@ -86,18 +86,18 @@ Key features include an online reservation system with time slot availability ch
     id: "4",
     title: "Brasserie Pizzeria Hama",
     description:
-      "A Dutch restaurant website for Brasserie Pizzeria Hama in Terneuzen — full menukaart with categories, online bestellen, table reservations, and halal dishes.",
-    longDescription: `Brasserie Pizzeria Hama is a restaurant website built for a brasserie and pizzeria in Terneuzen. The site presents the brand with a dark, gold-accented design and guides guests to order online, reserve a table, or browse the full menu.
+      "Restaurantwebsite voor Brasserie Pizzeria Hama in Terneuzen — volledige menukaart met categorieën, online bestellen, tafelreserveringen en halal gerechten.",
+    longDescription: `Brasserie Pizzeria Hama is een restaurantwebsite voor een brasserie en pizzeria in Terneuzen. De site presenteert het merk met een donker, goud-accent design en helpt gasten online te bestellen, een tafel te reserveren of de volledige menukaart te bekijken.
 
-The menukaart is organized by category — voorgerechten, pizza's, pasta's, vlees, vis, desserts, dranken, and more — with prices and descriptions for each dish. A featured section highlights popular items and the daily recommendation.
+De menukaart is ingedeeld per categorie — voorgerechten, pizza's, pasta's, vlees, vis, desserts, dranken en meer — met prijzen en beschrijvingen per gerecht. Een uitgelichte sectie toont populaire gerechten en de aanrader van de dag.
 
-Visitors can call directly, place orders online, and see opening hours and delivery times. All meat dishes are marked as 100% halal.`,
+Bezoekers kunnen direct bellen, online bestellen en openingstijden en bezorgtijden bekijken. Alle vleesgerechten zijn 100% halal.`,
     features: [
-      "Full menukaart with category filters",
-      "Online bestellen (ordering)",
-      "Table reservations",
-      "Halal menu section",
-      "Opening hours & delivery times",
+      "Volledige menukaart met categoriefilters",
+      "Online bestellen",
+      "Tafelreserveringen",
+      "Halal-menu sectie",
+      "Openingstijden & bezorgtijden",
       "Responsive design",
     ],
     images: [

@@ -56,14 +56,14 @@ export default function Contact() {
         {/* Header */}
         <div className="text-center mb-12 reveal">
           <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
-            Get In Touch
+            Neem contact op
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-6">
-            Let&apos;s <span className="font-bold">connect</span>
+            Laten we <span className="font-bold">praten</span>
           </h2>
           <p className="text-neutral-400 max-w-2xl mx-auto text-lg">
-            Interested in working together or have a question? 
-            Feel free to reach out — I&apos;d love to hear from you.
+            Interesse in samenwerken of heb je een vraag?
+            Stuur gerust een bericht — ik hoor graag van je.
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="reveal flex">
             <div className="bg-gradient-to-br from-neutral-900/50 via-emerald-950/10 to-neutral-900/50 border border-emerald-800/30 rounded-2xl p-8 backdrop-blur-sm flex flex-col w-full">
-              <h3 className="text-2xl font-semibold text-white mb-8 text-center lg:text-left">Contact Information</h3>
+              <h3 className="text-2xl font-semibold text-white mb-8 text-center lg:text-left">Contactgegevens</h3>
               
               <div className="space-y-6 flex-1">
                 {/* Email */}
@@ -85,7 +85,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">Email</p>
+                    <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">E-mail</p>
                     <p className="text-white group-hover:text-emerald-400 transition-colors">nawid@example.com</p>
                   </div>
                 </a>
@@ -99,14 +99,14 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">Location</p>
-                    <p className="text-white">Netherlands</p>
+                    <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">Locatie</p>
+                    <p className="text-white">Nederland</p>
                   </div>
                 </div>
 
                 {/* Social Links */}
                 <div className="pt-4 border-t border-neutral-800">
-                  <p className="text-neutral-500 text-xs uppercase tracking-wider mb-4 text-center lg:text-left">Social Media</p>
+                  <p className="text-neutral-500 text-xs uppercase tracking-wider mb-4 text-center lg:text-left">Social media</p>
                   <div className="flex gap-4 justify-center lg:justify-start">
                     <a
                       href="https://github.com"
@@ -137,7 +137,7 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="reveal flex">
             <div className="bg-gradient-to-br from-neutral-900/50 via-emerald-950/10 to-neutral-900/50 border border-emerald-800/30 rounded-2xl p-8 backdrop-blur-sm flex flex-col w-full">
-              <h3 className="text-2xl font-semibold text-white mb-8 text-center lg:text-left">Send a Message</h3>
+              <h3 className="text-2xl font-semibold text-white mb-8 text-center lg:text-left">Stuur een bericht</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
                 <div>
@@ -145,7 +145,7 @@ export default function Contact() {
                     htmlFor="name"
                     className="block text-neutral-400 text-sm font-medium mb-2"
                   >
-                    Name
+                    Naam
                   </label>
                   <input
                     type="text"
@@ -155,7 +155,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-neutral-800/30 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20 transition-all"
-                    placeholder="Your name"
+                    placeholder="Je naam"
                   />
                 </div>
 
@@ -164,7 +164,7 @@ export default function Contact() {
                     htmlFor="email"
                     className="block text-neutral-400 text-sm font-medium mb-2"
                   >
-                    Email
+                    E-mail
                   </label>
                   <input
                     type="email"
@@ -174,7 +174,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-neutral-800/30 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20 transition-all"
-                    placeholder="your@email.com"
+                    placeholder="jouw@email.nl"
                   />
                 </div>
 
@@ -183,7 +183,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="block text-neutral-400 text-sm font-medium mb-2"
                   >
-                    Message
+                    Bericht
                   </label>
                   <textarea
                     id="message"
@@ -193,7 +193,7 @@ export default function Contact() {
                     required
                     rows={6}
                     className="w-full px-4 py-3 bg-neutral-800/30 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20 transition-all resize-none"
-                    placeholder="Tell me about your project or just say hello..."
+                    placeholder="Vertel over je project of zeg gewoon hallo..."
                   />
                 </div>
 
@@ -209,18 +209,18 @@ export default function Contact() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Sending...
+                      Verzenden...
                     </>
                   ) : status === 'success' ? (
                     <>
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
-                      Message Sent!
+                      Bericht verzonden!
                     </>
                   ) : (
                     <>
-                      Send Message
+                      Verstuur bericht
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
@@ -232,7 +232,7 @@ export default function Contact() {
                 {status === 'error' && (
                   <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
                     <p className="text-red-400 text-sm text-center">
-                      There was an error sending your message. Please try again.
+                      Er ging iets mis bij het verzenden. Probeer het opnieuw.
                     </p>
                   </div>
                 )}
@@ -240,7 +240,7 @@ export default function Contact() {
                 {status === 'success' && (
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
                     <p className="text-emerald-400 text-sm text-center">
-                      Thank you! Your message has been sent successfully.
+                      Bedankt! Je bericht is succesvol verzonden.
                     </p>
                   </div>
                 )}

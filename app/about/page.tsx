@@ -3,8 +3,8 @@ import About from "@/components/About";
 import SiteFrame from "@/components/SiteFrame";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Learn more about Nawid Haidari, background, and goals.",
+  title: "Over mij",
+  description: "Leer meer over Nawid Haidari, mijn achtergrond en doelen.",
 };
 
 export default function AboutPage() {

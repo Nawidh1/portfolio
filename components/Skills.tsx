@@ -19,7 +19,7 @@ export default function Skills() {
   const groups = [
     {
       label: 'Frontend',
-      description: 'Building beautiful, responsive user interfaces',
+      description: 'Mooie, responsieve gebruikersinterfaces bouwen',
       skills: [
         { name: 'HTML', color: '#E34F26' },
         { name: 'CSS', color: '#1572B6' },
@@ -31,7 +31,7 @@ export default function Skills() {
     },
     {
       label: 'Backend',
-      description: 'Server-side logic and database management',
+      description: 'Serverlogica en databasebeheer',
       skills: [
         { name: 'Node.js', color: '#339933' },
         { name: 'PHP', color: '#777BB4' },
@@ -41,7 +41,7 @@ export default function Skills() {
     },
     {
       label: 'Tools',
-      description: 'Development workflow and collaboration',
+      description: 'Ontwikkelworkflow en samenwerking',
       skills: [
         { name: 'Git', color: '#F05032' },
         { name: 'GitHub', color: '#e2e2e2' },
@@ -103,7 +103,7 @@ export default function Skills() {
                 <div className="w-3 h-3 rounded-full bg-emerald-500 relative">
                   <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-40" />
                 </div>
-                <span className="text-emerald-500 text-xs font-mono uppercase tracking-[0.4em]">Skills</span>
+                <span className="text-emerald-500 text-xs font-mono uppercase tracking-[0.4em]">Vaardigheden</span>
               </div>
               <div
                 className="flex-1 h-px"
@@ -125,7 +125,7 @@ export default function Skills() {
                 }}
               >
                 <span className="block text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1]">
-                  Technologies
+                  Technologieën
                 </span>
               </h2>
             </div>
@@ -138,7 +138,7 @@ export default function Skills() {
                 }}
               >
                 <span className="block text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1]">
-                  I Work With
+                  die ik gebruik
                 </span>
               </h2>
             </div>
@@ -147,8 +147,8 @@ export default function Skills() {
           {/* Right side stats */}
           <div className="flex items-end gap-10 lg:justify-end">
             {[
-              { number: '15', label: 'Technologies' },
-              { number: '3', label: 'Categories' },
+              { number: '13', label: 'Technologieën' },
+              { number: '3', label: 'Categorieën' },
             ].map((stat, i) => (
               <div
                 key={stat.label}
@@ -186,7 +186,7 @@ export default function Skills() {
                     <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">{group.label}</h3>
                     <p className="text-neutral-500 text-sm">{group.description}</p>
                   </div>
-                  <span className="text-neutral-700 text-xs font-mono">{group.skills.length} skills</span>
+                  <span className="text-neutral-700 text-xs font-mono">{group.skills.length} vaardigheden</span>
                 </div>
 
                 {/* Skills grid */}
@@ -309,7 +309,7 @@ export default function Skills() {
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-neutral-500 text-sm">
-              Each technology chosen with purpose. Always expanding my toolkit.
+              Elke technologie bewust gekozen. Mijn toolkit blijft groeien.
             </p>
             <div className="flex gap-2">
               {groups.map((g) => (

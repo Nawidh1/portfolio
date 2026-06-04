@@ -108,7 +108,7 @@ export default function About() {
             <div className="w-3 h-3 rounded-full bg-emerald-500 relative">
               <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-50" />
             </div>
-            <span className="text-emerald-500 text-sm font-mono tracking-widest uppercase">About Me</span>
+            <span className="text-emerald-500 text-sm font-mono tracking-widest uppercase">Over mij</span>
           </div>
           <div className={`flex-1 h-px origin-left ${isVisible ? 'animate-[reveal-line_1.5s_ease-out_forwards]' : 'scale-x-0'}`} style={{ background: 'linear-gradient(90deg, #10b981, transparent)' }} />
         </div>
@@ -150,7 +150,7 @@ export default function About() {
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="backdrop-blur-xl bg-neutral-950/60 border border-white/10 rounded-xl px-5 py-4 group-hover:border-emerald-500/30 transition-all duration-500 group-hover:translate-y-[-4px]">
                       <div className="text-white font-semibold text-lg tracking-wide">Nawid Haidari</div>
-                      <div className="gradient-text text-sm font-medium mt-1">Software Developer Student</div>
+                      <div className="gradient-text text-sm font-medium mt-1">Student Softwareontwikkeling</div>
                     </div>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ export default function About() {
           <div className="lg:col-span-7 flex flex-col justify-center">
             {/* Animated heading - word by word */}
             <div className="mb-8" style={{ perspective: '600px' }}>
-              {['Passionate', 'about', 'crafting', 'digital', 'experiences.'].map((word, i) => (
+              {['Gepassioneerd', 'door', 'het', 'maken', 'van', 'digitale', 'ervaringen.'].map((word, i) => (
                 <span
                   key={i}
                   className={isVisible ? 'word-animate' : 'opacity-0'}
@@ -174,11 +174,11 @@ export default function About() {
                     animationDelay: `${0.4 + i * 0.12}s`,
                     marginRight: '0.35em',
                     fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-                    fontWeight: word === 'crafting' || word === 'experiences.' ? 700 : 300,
-                    color: word === 'crafting' || word === 'digital' ? undefined : '#e5e5e5',
+                    fontWeight: word === 'maken' || word === 'ervaringen.' ? 700 : 300,
+                    color: word === 'maken' || word === 'digitale' ? undefined : '#e5e5e5',
                   }}
                 >
-                  {(word === 'crafting' || word === 'digital') ? (
+                  {(word === 'maken' || word === 'digitale') ? (
                     <span className="gradient-text">{word}</span>
                   ) : word}
                 </span>
@@ -188,8 +188,8 @@ export default function About() {
             {/* Description paragraphs with staggered reveal */}
             <div className="space-y-4 mb-10">
               {[
-                "I'm a Software Development student at MBO 4, currently in my third year. I'm focused on becoming a skilled application developer.",
-                "I enjoy solving problems through code and creating applications that are both functional and user-friendly. Every project is an opportunity to learn and grow."
+                "Ik ben student Softwareontwikkeling aan MBO 4, momenteel in mijn derde jaar. Mijn doel is om een vaardige applicatieontwikkelaar te worden.",
+                "Ik los graag problemen op met code en bouw applicaties die functioneel en gebruiksvriendelijk zijn. Elk project is een kans om te leren en te groeien."
               ].map((text, i) => (
                 <p
                   key={i}
@@ -205,8 +205,8 @@ export default function About() {
             <div className={`grid grid-cols-3 gap-4 mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: '1200ms' }}>
               {[
                 { value: 'MBO 4', label: 'School' },
-                { value: 'Year 3', label: 'Current' },
-                { value: 'SD', label: 'Program' },
+                { value: 'Jaar 3', label: 'Huidig' },
+                { value: 'SD', label: 'Opleiding' },
               ].map((stat, i) => (
                 <div key={i} className="group text-center p-4 rounded-xl bg-neutral-900/50 border border-neutral-800/50 hover:border-emerald-500/30 hover:bg-emerald-950/20 transition-all duration-400 cursor-default">
                   <div className="text-2xl md:text-3xl font-light text-emerald-500 mb-1 group-hover:scale-110 transition-transform duration-300 inline-block">{stat.value}</div>

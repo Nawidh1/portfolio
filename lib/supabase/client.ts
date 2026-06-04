@@ -6,7 +6,7 @@ export function createClient() {
 
   if (!url || !key) {
     throw new Error(
-      'Supabase is not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local or Vercel.'
+      'Supabase is niet geconfigureerd. Stel NEXT_PUBLIC_SUPABASE_URL en NEXT_PUBLIC_SUPABASE_ANON_KEY in via .env.local of Vercel.'
     )
   }
 

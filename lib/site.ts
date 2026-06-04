@@ -14,4 +14,4 @@ function resolveSiteUrl(): string {
 
 export const siteUrl = resolveSiteUrl();
 
-export const siteName = "Nawid Haidari Portfolio";
+export const siteName = "Portfolio Nawid Haidari";

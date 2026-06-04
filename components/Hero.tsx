@@ -32,7 +32,7 @@ export default function Hero() {
           <div className={`space-y-8 text-center lg:text-left ${isMounted ? 'animate-slide-up' : 'opacity-0'}`}>
             <div className="space-y-4">
               <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium">
-                Software Developer Student
+                Student Softwareontwikkeling
               </p>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[0.9]">
                 Nawid
@@ -42,8 +42,8 @@ export default function Hero() {
             </div>
 
             <p className="text-neutral-400 text-lg max-w-md leading-relaxed mx-auto lg:mx-0">
-              MBO Software Development student passionate about building web applications. 
-              Learning and growing every day to become a skilled developer.
+              MBO Softwareontwikkeling student met passie voor het bouwen van webapplicaties.
+              Elke dag leer ik bij om een betere developer te worden.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
@@ -51,13 +51,13 @@ export default function Hero() {
                 href="/projects"
                 className="px-8 py-4 bg-emerald-600 text-neutral-950 font-medium text-sm uppercase tracking-wider hover:bg-emerald-500 transition-colors"
               >
-                View Projects
+                Bekijk projecten
               </Link>
               <Link
                 href="/contact"
                 className="px-8 py-4 border border-neutral-700 text-white font-medium text-sm uppercase tracking-wider hover:border-emerald-600 hover:text-emerald-500 transition-colors"
               >
-                Get In Touch
+                Neem contact op
               </Link>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function Hero() {
         {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
           <Link href="/about" className="flex flex-col items-center gap-4 text-neutral-500 hover:text-emerald-500 transition-colors group">
-            <span className="text-xs uppercase tracking-[0.3em]">Scroll</span>
+            <span className="text-xs uppercase tracking-[0.3em]">Scrollen</span>
             <div className="w-px h-16 bg-gradient-to-b from-emerald-600 to-transparent group-hover:h-20 transition-all" />
           </Link>
         </div>
