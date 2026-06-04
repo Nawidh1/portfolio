@@ -77,7 +77,7 @@ Belangrijke functies zijn een online reserveringssysteem met beschikbaarheidscon
       "/projects/omidtje/6.png",
       "/projects/omidtje/7.png",
     ],
-    technologies: ["PHP", "CSS"],
+    technologies: ["PHP", "CSS", "PHPMailer"],
     github_url: "https://github.com/Nawidh1/omid",
     live_url: null,
     created_at: "2024-06-01T00:00:00.000Z",
