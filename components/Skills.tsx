@@ -36,6 +36,7 @@ export default function Skills() {
         { name: 'Node.js', color: '#339933' },
         { name: 'PHP', color: '#777BB4' },
         { name: 'SQL', color: '#4479A1' },
+        { name: 'Supabase', color: '#3ECF8E' },
         { name: 'REST APIs', color: '#10b981' },
       ],
     },
@@ -45,8 +46,7 @@ export default function Skills() {
       skills: [
         { name: 'Git', color: '#F05032' },
         { name: 'GitHub', color: '#e2e2e2' },
-        { name: 'VS Code', color: '#007ACC' },
-        { name: 'Figma', color: '#F24E1E' },
+        { name: 'Cursor', color: '#e2e2e2' },
         { name: 'npm', color: '#CB3837' },
       ],
     },
