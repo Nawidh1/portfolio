@@ -20,12 +20,13 @@ export default function Experience() {
     { year: '2023', title: 'Eerste webprojecten', desc: 'Applicaties gebouwd met HTML, CSS, JavaScript en PHP. Ook database-ontwerp met MySQL.', icon: '💻' },
     { year: '2024', title: 'Moderne tech stack', desc: 'Overgestapt naar React, Next.js en Tailwind CSS. Ook Node.js verkend.', icon: '⚡' },
     { year: '2025', title: 'Full-stack focus', desc: 'Derde jaar student. Complexe full-stack apps bouwen en mijn skills voortdurend uitbreiden.', icon: '🚀' },
+    { year: '2026', title: 'Portfolio & klantprojecten', desc: 'Eigen portfolio live gezet en meerdere real-world projecten opgeleverd, waaronder Brasserie Hama met Astro, TypeScript en Supabase.', icon: '🌐' },
   ]
 
   const stats = [
     { label: 'School', value: 'MBO 4' },
     { label: 'Opleiding', value: 'Software Dev' },
-    { label: 'Status', value: '3e jaar student' },
+    { label: 'Status', value: '3e jaar · 2026' },
   ]
 
   const skills = [
@@ -177,7 +178,7 @@ export default function Experience() {
               <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl group-hover:bg-emerald-500/20 transition-colors" />
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Blijven leren</h3>
               <p className="text-sm text-neutral-400 leading-relaxed relative z-10 group-hover:text-neutral-300 transition-colors">
-                Momenteel breid ik mijn kennis uit in systeemarchitectuur, cloud deployment en geavanceerde patronen om robuustere applicaties te bouwen.
+                In 2026 breid ik mijn kennis verder uit met cloud deployment, Supabase en moderne frameworks om productieklare en onderhoudbare applicaties te bouwen.
               </p>
             </div>
 
