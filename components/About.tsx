@@ -188,8 +188,8 @@ export default function About() {
             {/* Description paragraphs with staggered reveal */}
             <div className="space-y-4 mb-10">
               {[
-                "Ik ben student Softwareontwikkeling aan MBO 4, momenteel in mijn derde jaar. Mijn doel is om een vaardige applicatieontwikkelaar te worden.",
-                "Ik los graag problemen op met code en bouw applicaties die functioneel en gebruiksvriendelijk zijn. Elk project is een kans om te leren en te groeien."
+                "Ik ben student Softwareontwikkeling (MBO 4) en zit momenteel in mijn derde jaar. Mijn doel is om een vaardige softwareontwikkelaar te worden die betrouwbare en gebruiksvriendelijke software kan ontwikkelen.",
+                "Ik werk graag aan het oplossen van technische uitdagingen en het ontwikkelen van slimme oplossingen met code. Of het nu gaat om websites, applicaties of andere softwareprojecten, ik zie elk project als een kans om mijn kennis te vergroten, nieuwe vaardigheden te ontwikkelen en te groeien als ontwikkelaar.",
               ].map((text, i) => (
                 <p
                   key={i}
