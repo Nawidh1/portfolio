@@ -76,7 +76,7 @@ export default function Contact() {
               <div className="space-y-6 flex-1">
                 {/* Email */}
                 <a
-                  href="mailto:nawid@example.com"
+                  href="mailto:snhhaidari@gmail.com"
                   className="flex flex-col lg:flex-row items-center lg:items-start gap-4 p-4 rounded-lg bg-neutral-800/30 hover:bg-neutral-800/50 border border-transparent hover:border-emerald-600/30 transition-all group text-center lg:text-left"
                 >
                   <div className="w-12 h-12 rounded-lg bg-emerald-600/20 flex items-center justify-center group-hover:bg-emerald-600/30 transition-colors">
@@ -86,7 +86,7 @@ export default function Contact() {
                   </div>
                   <div className="flex-1">
                     <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">Email</p>
-                    <p className="text-white group-hover:text-emerald-400 transition-colors">nawid@example.com</p>
+                    <p className="text-white group-hover:text-emerald-400 transition-colors">snhhaidari@gmail.com</p>
                   </div>
                 </a>
 
