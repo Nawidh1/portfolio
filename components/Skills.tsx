@@ -46,6 +46,9 @@ export default function Skills() {
         { name: 'Git', color: '#F05032' },
         { name: 'GitHub', color: '#e2e2e2' },
         { name: 'Cursor', color: '#e2e2e2' },
+        { name: 'ChatGPT', color: '#10A37F' },
+        { name: 'Stitch', color: '#4285F4' },
+        { name: 'Vercel', color: '#ffffff' },
       ],
     },
   ]
@@ -147,7 +150,7 @@ export default function Skills() {
           {/* Right side stats */}
           <div className="flex items-end justify-center sm:justify-start gap-8 sm:gap-10 lg:justify-end">
             {[
-              { number: '13', label: 'Technologies' },
+              { number: '16', label: 'Technologies' },
               { number: '3', label: 'Categories' },
             ].map((stat, i) => (
               <div
