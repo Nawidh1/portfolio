@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { portfolioProjects } from '@/lib/projects'
 
@@ -114,11 +115,14 @@ export default function Projects() {
                               className="flex-shrink-0 w-full h-full snap-center relative bg-gradient-to-br from-neutral-800 via-emerald-950/10 to-neutral-800 flex items-center justify-center p-2"
                               style={{ minWidth: '100%', width: '100%' }}
                             >
-                              <img
+                              <Image
                                 src={img}
                                 alt={`${project.title} screenshot ${imgIndex + 1}`}
+                                width={960}
+                                height={540}
+                                loading={imgIndex === 0 ? 'eager' : 'lazy'}
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 className="max-w-full max-h-full w-auto h-auto object-contain"
-                                style={{ display: 'block' }}
                               />
                             </div>
                           ))}

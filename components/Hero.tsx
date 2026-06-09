@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Hero() {
@@ -44,14 +45,14 @@ export default function Hero() {
             {/* Mobile profile */}
             <div className={`flex lg:hidden justify-center ${isMounted ? 'animate-slide-up' : 'opacity-0'}`}>
               <div className="relative max-w-[220px] sm:max-w-[280px] w-full">
-                <img
+                <Image
                   src="/profile2.jpg"
                   alt="Nawid Haidari"
+                  width={400}
+                  height={533}
+                  priority
+                  sizes="(max-width: 640px) 220px, 280px"
                   className="w-full aspect-[3/4] object-cover border-4 border-neutral-600 rounded-lg"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                  }}
                 />
               </div>
             </div>
@@ -81,23 +82,15 @@ export default function Hero() {
             <div className="relative">
               <div className="relative">
                 {/* Profile Photo - natural aspect ratio, no stretch */}
-                <img
+                <Image
                   src="/profile2.jpg"
                   alt="Nawid Haidari"
+                  width={480}
+                  height={640}
+                  priority
+                  sizes="(max-width: 1280px) 0px, 480px"
                   className="max-w-full max-h-[65vh] w-auto h-auto object-contain border-4 border-neutral-600 rounded-lg block"
-                  onError={(e) => {
-                    // Fallback to initials if image not found
-                    const target = e.target as HTMLImageElement
-                    target.style.display = 'none'
-                    const fallback = target.parentElement?.querySelector('.initials-fallback')
-                    if (fallback) {
-                      (fallback as HTMLElement).style.display = 'flex'
-                    }
-                  }}
                 />
-                <div className="initials-fallback absolute inset-0 flex items-center justify-center" style={{ display: 'none' }}>
-                  <span className="text-9xl font-black text-emerald-600/20">NH</span>
-                </div>
               </div>
               <div className="absolute -bottom-4 -right-4 w-32 h-32 border border-neutral-600" />
               <div className="absolute -top-4 -left-4 w-20 h-20 border border-neutral-700" />

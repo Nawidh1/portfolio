@@ -21,10 +21,10 @@ export default function InteractiveGrid() {
     if (!ctx) return
 
     let animationId: number
+    let isVisible = !document.hidden
     const dots: { x: number; y: number; baseX: number; baseY: number }[] = []
-    const spacing = 50
-    const connectionDistance = 100
-    const mouseRadius = 150
+    const spacing = 72
+    const mouseRadius = 140
 
     const resize = () => {
       canvas.width = window.innerWidth
@@ -34,8 +34,8 @@ export default function InteractiveGrid() {
 
     const initDots = () => {
       dots.length = 0
-      for (let x = 0; x < canvas.width; x += spacing) {
-        for (let y = 0; y < canvas.height; y += spacing) {
+      for (let x = spacing / 2; x < canvas.width; x += spacing) {
+        for (let y = spacing / 2; y < canvas.height; y += spacing) {
           dots.push({ x, y, baseX: x, baseY: y })
         }
       }
@@ -45,58 +45,51 @@ export default function InteractiveGrid() {
       mouseRef.current = { x: e.clientX, y: e.clientY }
     }
 
+    const handleVisibility = () => {
+      isVisible = !document.hidden
+      if (isVisible) {
+        animationId = requestAnimationFrame(animate)
+      }
+    }
+
     const animate = () => {
+      if (!isVisible) return
+
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      // Update and draw dots
-      dots.forEach((dot, i) => {
+      for (const dot of dots) {
         const dx = mouseRef.current.x - dot.baseX
         const dy = mouseRef.current.y - dot.baseY
         const distance = Math.sqrt(dx * dx + dy * dy)
 
         if (distance < mouseRadius) {
           const force = (mouseRadius - distance) / mouseRadius
-          dot.x = dot.baseX - dx * force * 0.3
-          dot.y = dot.baseY - dy * force * 0.3
+          dot.x = dot.baseX - dx * force * 0.25
+          dot.y = dot.baseY - dy * force * 0.25
         } else {
-          dot.x += (dot.baseX - dot.x) * 0.1
-          dot.y += (dot.baseY - dot.y) * 0.1
+          dot.x += (dot.baseX - dot.x) * 0.12
+          dot.y += (dot.baseY - dot.y) * 0.12
         }
 
-        // Draw dot
         ctx.beginPath()
-        ctx.arc(dot.x, dot.y, 1.5, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(212, 165, 116, 0.3)'
+        ctx.arc(dot.x, dot.y, 1.25, 0, Math.PI * 2)
+        ctx.fillStyle = 'rgba(212, 165, 116, 0.28)'
         ctx.fill()
-
-        // Connect nearby dots
-        for (let j = i + 1; j < dots.length; j++) {
-          const other = dots[j]
-          const distX = dot.x - other.x
-          const distY = dot.y - other.y
-          const dist = Math.sqrt(distX * distX + distY * distY)
-
-          if (dist < connectionDistance) {
-            ctx.beginPath()
-            ctx.moveTo(dot.x, dot.y)
-            ctx.lineTo(other.x, other.y)
-            ctx.strokeStyle = `rgba(212, 165, 116, ${0.1 * (1 - dist / connectionDistance)})`
-            ctx.stroke()
-          }
-        }
-      })
+      }
 
       animationId = requestAnimationFrame(animate)
     }
 
     resize()
     window.addEventListener('resize', resize)
-    window.addEventListener('mousemove', handleMouseMove)
-    animate()
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    document.addEventListener('visibilitychange', handleVisibility)
+    animationId = requestAnimationFrame(animate)
 
     return () => {
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('visibilitychange', handleVisibility)
       cancelAnimationFrame(animationId)
     }
   }, [isMounted])
@@ -107,7 +100,7 @@ export default function InteractiveGrid() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.5 }}
     />
   )
 }

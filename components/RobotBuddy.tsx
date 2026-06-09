@@ -11,6 +11,7 @@ export default function RobotBuddy() {
   const [isMounted, setIsMounted] = useState(false)
   const mouseRef = useRef({ x: 0, y: 0 })
   const rafRef = useRef<number | null>(null)
+  const pendingRafRef = useRef(false)
 
   const messages = [
     "Hello! 👋",
@@ -26,17 +27,19 @@ export default function RobotBuddy() {
     setIsMounted(true)
   }, [])
 
-  // Track mouse for eye movement (throttled via RAF to avoid update depth)
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY }
+      if (pendingRafRef.current) return
+
+      pendingRafRef.current = true
+      rafRef.current = requestAnimationFrame(() => {
+        setMousePosition({ ...mouseRef.current })
+        pendingRafRef.current = false
+      })
     }
-    const tick = () => {
-      setMousePosition({ ...mouseRef.current })
-      rafRef.current = requestAnimationFrame(tick)
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    rafRef.current = requestAnimationFrame(tick)
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
       if (rafRef.current) cancelAnimationFrame(rafRef.current)

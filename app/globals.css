@@ -37,7 +37,12 @@ body {
     radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 40% 20%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
-  background-attachment: fixed;
+}
+
+@media (min-width: 1024px) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
 html {
@@ -75,6 +80,16 @@ html {
 
 .animate-slide-left {
   animation: slide-left 0.8s ease-out forwards;
+}
+
+@keyframes sound-wave {
+  0%, 100% { height: 20%; }
+  50% { height: 85%; }
+}
+
+.sound-wave-bar {
+  height: 20%;
+  animation: sound-wave 1.1s ease-in-out infinite;
 }
 
 /* Scroll reveal */

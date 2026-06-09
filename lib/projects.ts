@@ -111,30 +111,6 @@ Visitors can call directly, order online, and view opening hours and delivery ti
     live_url: null,
     created_at: "2025-01-01T00:00:00.000Z",
   },
-  {
-    id: "5",
-    title: "Personal Portfolio",
-    description:
-      "Modern portfolio website with project overview, skills, experience, and contact form. Live at werk-nawid-dev.nl, built with Next.js and Supabase.",
-    longDescription: `This is my personal portfolio website — a full-stack web application where I present my projects, skills, and experience to clients and internship supervisors.
-
-The site includes a responsive homepage with hero section, a project gallery with detail pages per project, and separate pages for about, skills, experience, and contact. The contact form stores messages via Supabase.
-
-The application is built with Next.js 16 (App Router), TypeScript, React 19, and Tailwind CSS 4. The site is deployed on Vercel with a custom domain and SEO metadata (sitemap, Open Graph).`,
-    features: [
-      "Responsive design with dark theme",
-      "Project overview with detail pages",
-      "Skills and experience sections",
-      "Contact form with Supabase",
-      "SEO (metadata, sitemap)",
-      "Deployment on Vercel with custom domain",
-    ],
-    images: [],
-    technologies: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Supabase"],
-    github_url: "https://github.com/Nawidh1/portfolio",
-    live_url: "https://werk-nawid-dev.nl",
-    created_at: "2026-01-01T00:00:00.000Z",
-  },
 ]
 
 export function getProjectById(id: string): PortfolioProject | undefined {

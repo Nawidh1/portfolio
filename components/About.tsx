@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 
@@ -133,14 +134,13 @@ export default function About() {
                   <div className="absolute -inset-4 bg-emerald-500/10 rounded-3xl blur-2xl group-hover:bg-emerald-500/15 transition-all duration-700" />
 
                   <div className="relative overflow-hidden rounded-2xl">
-                    <img
+                    <Image
                       src="/profile2.jpg"
                       alt="Nawid Haidari"
+                      width={480}
+                      height={640}
+                      sizes="(max-width: 1024px) 100vw, 480px"
                       className="w-full aspect-[3/4] object-cover transition-transform duration-700 group-hover:scale-105"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        target.style.display = 'none'
-                      }}
                     />
                     {/* Color overlay that fades on hover */}
                     <div className="absolute inset-0 bg-emerald-900/20 mix-blend-multiply group-hover:bg-transparent transition-all duration-700" />
@@ -283,11 +283,6 @@ export default function About() {
                 title: 'Brasserie Pizzeria Hama',
                 desc: 'Restaurant website with full menu, ordering, and reservations.',
                 tech: 'Astro · TypeScript · PL/pgSQL',
-              },
-              {
-                title: 'Personal Portfolio',
-                desc: 'This website — built with Next.js, Supabase, and deployed on Vercel.',
-                tech: 'Next.js · React · Tailwind CSS',
               },
             ].map((project) => (
               <div

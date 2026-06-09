@@ -1,6 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { getProjectById } from '@/lib/projects'
@@ -73,9 +74,13 @@ export default function ProjectPage() {
             {/* Main Image */}
             <div className="relative aspect-video bg-gradient-to-br from-neutral-900 via-emerald-950/10 to-neutral-900 border border-emerald-800/30 rounded-xl overflow-hidden mb-4 flex items-center justify-center p-2 group">
               {project.images.length > 0 ? (
-                <img
+                <Image
                   src={project.images[selectedImage]}
                   alt={`${project.title} screenshot ${selectedImage + 1}`}
+                  width={1280}
+                  height={720}
+                  priority={selectedImage === 0}
+                  sizes="(max-width: 1280px) 100vw, 1280px"
                   className="w-full h-full object-contain rounded-sm"
                 />
               ) : (
@@ -136,9 +141,13 @@ export default function ProjectPage() {
                         : 'border-neutral-800 hover:border-neutral-600 opacity-60 hover:opacity-100'
                     }`}
                   >
-                    <img
+                    <Image
                       src={img}
                       alt={`Thumbnail ${index + 1}`}
+                      width={112}
+                      height={72}
+                      loading="lazy"
+                      sizes="112px"
                       className="w-full h-full object-cover"
                     />
                   </button>

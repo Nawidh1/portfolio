@@ -12,42 +12,17 @@ interface CodeParticle {
   size: number
 }
 
-const codeSymbols = [
-  '</>',
-  '{ }',
-  '( )',
-  '[ ]',
-  '=>',
-  '&&',
-  '||',
-  '++',
-  '===',
-  'fn()',
-  'const',
-  'let',
-  'if',
-  'for',
-  '0x',
-  '01',
-  'git',
-  '/**/',
-  '::',
-  '<%>',
-  'API',
-  'SQL',
-  'CSS',
-  'DOM',
-]
+const codeSymbols = ['</>', '{ }', '=>', '&&', 'fn()', 'const', 'git', 'API', 'SQL', 'CSS']
 
-function createInitialParticles(count = 10): CodeParticle[] {
+function createInitialParticles(count = 6): CodeParticle[] {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
     text: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
-    speed: 0.02 + Math.random() * 0.03,
-    opacity: 0.1 + Math.random() * 0.2,
-    size: 10 + Math.random() * 6,
+    speed: 0.015 + Math.random() * 0.02,
+    opacity: 0.08 + Math.random() * 0.14,
+    size: 10 + Math.random() * 4,
   }))
 }
 
@@ -62,25 +37,39 @@ export default function FloatingCode() {
   useEffect(() => {
     if (!isMounted) return
 
-    const animationInterval = setInterval(() => {
-      setParticles(prev =>
-        prev.map(p => ({
-          ...p,
-          y: p.y - p.speed,
-          x: p.x + Math.sin(p.y * 0.1) * 0.05,
-          // Reset when off screen
-          ...(p.y < -5
-            ? {
-                y: 105,
-                x: Math.random() * 100,
-                text: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
-              }
-            : {}),
-        }))
-      )
-    }, 50)
+    let intervalId: ReturnType<typeof setInterval>
 
-    return () => clearInterval(animationInterval)
+    const start = () => {
+      intervalId = setInterval(() => {
+        setParticles(prev =>
+          prev.map(p => ({
+            ...p,
+            y: p.y - p.speed,
+            x: p.x + Math.sin(p.y * 0.1) * 0.03,
+            ...(p.y < -5
+              ? {
+                  y: 105,
+                  x: Math.random() * 100,
+                  text: codeSymbols[Math.floor(Math.random() * codeSymbols.length)],
+                }
+              : {}),
+          }))
+        )
+      }, 100)
+    }
+
+    const handleVisibility = () => {
+      clearInterval(intervalId)
+      if (!document.hidden) start()
+    }
+
+    start()
+    document.addEventListener('visibilitychange', handleVisibility)
+
+    return () => {
+      clearInterval(intervalId)
+      document.removeEventListener('visibilitychange', handleVisibility)
+    }
   }, [isMounted])
 
   if (!isMounted) return null
@@ -96,7 +85,6 @@ export default function FloatingCode() {
             top: `${particle.y}%`,
             opacity: particle.opacity,
             fontSize: `${particle.size}px`,
-            textShadow: '0 0 10px rgba(217, 119, 6, 0.3)',
           }}
         >
           {particle.text}
