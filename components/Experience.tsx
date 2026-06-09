@@ -16,17 +16,17 @@ export default function Experience() {
   }, [])
 
   const journey = [
-    { year: '2022', title: 'Gestart MBO 4', desc: 'Begonnen met Softwareontwikkeling. Basis van programmeren, logica en webdevelopment geleerd.', icon: '🎓' },
-    { year: '2023', title: 'Eerste webprojecten', desc: 'Applicaties gebouwd met HTML, CSS, JavaScript en PHP. Ook database-ontwerp met MySQL.', icon: '💻' },
-    { year: '2024', title: 'Moderne tech stack', desc: 'Overgestapt naar React, Next.js en Tailwind CSS. Ook Node.js verkend.', icon: '⚡' },
-    { year: '2025', title: 'Full-stack focus', desc: 'Derde jaar student. Complexe full-stack apps bouwen en mijn skills voortdurend uitbreiden.', icon: '🚀' },
-    { year: '2026', title: 'Portfolio & klantprojecten', desc: 'Eigen portfolio live gezet en meerdere real-world projecten opgeleverd, waaronder Brasserie Hama met Astro, TypeScript en Supabase.', icon: '🌐' },
+    { year: '2022', title: 'Started MBO 4', desc: 'Began Software Development. Learned programming fundamentals, logic, and web development.', icon: '🎓' },
+    { year: '2023', title: 'First web projects', desc: 'Built applications with HTML, CSS, JavaScript, and PHP. Also learned database design with MySQL.', icon: '💻' },
+    { year: '2024', title: 'Modern tech stack', desc: 'Moved to React, Next.js, and Tailwind CSS. Also explored Node.js.', icon: '⚡' },
+    { year: '2025', title: 'Full-stack focus', desc: 'Third-year student. Building complex full-stack apps and continuously expanding my skills.', icon: '🚀' },
+    { year: '2026', title: 'Portfolio & client projects', desc: 'Launched my own portfolio and delivered multiple real-world projects, including Brasserie Hama with Astro, TypeScript, and Supabase.', icon: '🌐' },
   ]
 
   const stats = [
     { label: 'School', value: 'MBO 4' },
-    { label: 'Opleiding', value: 'Software Dev' },
-    { label: 'Status', value: '3e jaar · 2026' },
+    { label: 'Program', value: 'Software Dev' },
+    { label: 'Status', value: 'Year 3 · 2026' },
   ]
 
   const skills = [
@@ -37,15 +37,15 @@ export default function Experience() {
   ]
 
   return (
-    <section ref={sectionRef} id="education" className="py-32 relative bg-neutral-950/50">
+    <section ref={sectionRef} id="education" className="py-16 sm:py-24 md:py-32 relative bg-neutral-950/50 overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[20%] right-[10%] w-96 h-96 bg-emerald-500/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-[10%] left-[5%] w-[30rem] h-[30rem] bg-emerald-600/5 rounded-full blur-[150px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
-        <div className="mb-24 flex flex-col items-center text-center">
+        <div className="mb-12 sm:mb-16 md:mb-24 flex flex-col items-center text-center">
           <div 
             className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8"
             style={{
@@ -58,27 +58,27 @@ export default function Experience() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="text-emerald-400 text-sm font-mono tracking-widest uppercase">Mijn achtergrond</span>
+            <span className="text-emerald-400 text-sm font-mono tracking-widest uppercase">My Background</span>
           </div>
           
           <h2 
-            className="text-5xl md:text-7xl font-black text-white tracking-tight"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white tracking-tight px-2"
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
               transition: 'all 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s'
             }}
           >
-            Opleiding & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">ervaring</span>
+            Education & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">experience</span>
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-8">
           
           <div className="lg:col-span-7 relative">
             <div className="absolute left-8 top-4 bottom-4 w-px bg-gradient-to-b from-emerald-500/50 via-emerald-500/20 to-transparent hidden md:block" />
             
-            <div className="space-y-12">
+            <div className="space-y-6 sm:space-y-8 md:space-y-12">
               {journey.map((item, i) => (
                 <div 
                   key={i} 
@@ -93,17 +93,17 @@ export default function Experience() {
                     <div className="w-1 h-1 rounded-full bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                   
-                  <div className="bg-neutral-900/40 border border-neutral-800/60 hover:border-emerald-500/40 rounded-2xl p-6 md:p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-900/80 hover:shadow-[0_8px_30px_rgb(16,185,129,0.05)]">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
+                  <div className="bg-neutral-900/40 border border-neutral-800/60 hover:border-emerald-500/40 rounded-2xl p-5 sm:p-6 md:p-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-neutral-900/80 hover:shadow-[0_8px_30px_rgb(16,185,129,0.05)]">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                       <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-neutral-800/80 text-2xl border border-neutral-700/50 group-hover:scale-110 transition-transform duration-300">
                         {item.icon}
                       </div>
                       <div>
                         <div className="text-emerald-500 font-mono text-sm mb-1">{item.year}</div>
-                        <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">{item.title}</h3>
+                        <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">{item.title}</h3>
                       </div>
                     </div>
-                    <p className="text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors">
+                    <p className="text-neutral-400 text-sm sm:text-base leading-relaxed group-hover:text-neutral-300 transition-colors">
                       {item.desc}
                     </p>
                   </div>
@@ -118,7 +118,7 @@ export default function Experience() {
               {stats.map((stat, i) => (
                 <div 
                   key={i}
-                  className={`bg-neutral-900/40 border border-neutral-800/60 rounded-2xl p-6 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 ${i === 2 ? 'col-span-2' : ''}`}
+                  className={`bg-neutral-900/40 border border-neutral-800/60 rounded-2xl p-4 sm:p-6 hover:border-emerald-500/40 hover:-translate-y-1 transition-all duration-300 ${i === 2 ? 'col-span-2' : ''}`}
                   style={{
                     opacity: isVisible ? 1 : 0,
                     transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -141,7 +141,7 @@ export default function Experience() {
             >
               <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="w-8 h-px bg-emerald-500/50"></span>
-                Technische focus
+                Technical Focus
               </h3>
               
               <div className="space-y-6">
@@ -176,9 +176,9 @@ export default function Experience() {
               }}
             >
               <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl group-hover:bg-emerald-500/20 transition-colors" />
-              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Blijven leren</h3>
+              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Keep Learning</h3>
               <p className="text-sm text-neutral-400 leading-relaxed relative z-10 group-hover:text-neutral-300 transition-colors">
-                In 2026 breid ik mijn kennis verder uit met cloud deployment, Supabase en moderne frameworks om productieklare en onderhoudbare applicaties te bouwen.
+                In 2026 I'm expanding my knowledge in cloud deployment, Supabase, and modern frameworks to build production-ready and maintainable applications.
               </p>
             </div>
 

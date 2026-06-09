@@ -16,21 +16,21 @@ export const portfolioProjects: PortfolioProject[] = [
     id: "1",
     title: "Sadat Victorian Association",
     description:
-      "Tweetalige communitywebsite voor een islamitische vereniging met nieuws, evenementen, bronnen en een volledig admin-dashboard. Engels en Farsi met dynamisch contentbeheer.",
-    longDescription: `Dit project is een uitgebreide communitywebsite voor de Sadat Victorian Association.
+      "Bilingual community website for an Islamic association with news, events, resources, and a full admin dashboard. English and Farsi with dynamic content management.",
+    longDescription: `This project is a comprehensive community website for the Sadat Victorian Association.
 
-De website fungeert als centraal punt voor de gemeenschap, met informatie over evenementen, nieuws, bronnen en manieren om betrokken te raken.
+The website serves as a central hub for the community, providing information about events, news, resources, and ways to get involved.
 
-Een belangrijk onderdeel is de tweetalige ondersteuning — gebruikers kunnen wisselen tussen Engels en Farsi, zodat de content voor een breder publiek toegankelijk is.
+A key feature is bilingual support — users can switch between English and Farsi, making content accessible to a wider audience.
 
-Het admin-dashboard laat bevoegde gebruikers alle content beheren, inclusief nieuwsartikelen, evenementen, bronnen en homepage-secties, zonder code aan te passen.`,
+The admin dashboard allows authorized users to manage all content, including news articles, events, resources, and homepage sections, without editing code.`,
     features: [
-      "Tweetalige ondersteuning (Engels & Farsi)",
-      "Dynamisch contentbeheer",
-      "Admin-dashboard met authenticatie",
-      "Nieuws- en evenementenbeheer",
-      "Bronnenbibliotheek",
-      "Contactformulier",
+      "Bilingual support (English & Farsi)",
+      "Dynamic content management",
+      "Admin dashboard with authentication",
+      "News and event management",
+      "Resource library",
+      "Contact form",
       "Responsive design",
     ],
     images: [
@@ -51,21 +51,21 @@ Het admin-dashboard laat bevoegde gebruikers alle content beheren, inclusief nie
     id: "3",
     title: "Kapper Omid",
     description:
-      "Kapperswebsite met online reserveringssysteem, gebruikersaccounts, dienstenbeheer en admin-dashboard. Gebouwd met PHP en MySQL.",
-    longDescription: `Kapper Omid is een complete kapperswebsite gebouwd met PHP en MySQL. De website biedt een volledige oplossing voor het beheren van afspraken, diensten en klantcontact.
+      "Barber shop website with online booking system, user accounts, service management, and admin dashboard. Built with PHP and MySQL.",
+    longDescription: `Kapper Omid is a complete barber shop website built with PHP and MySQL. The website provides a full solution for managing appointments, services, and customer contact.
 
-Het systeem bevat gebruikersregistratie en authenticatie, zodat klanten accounts kunnen aanmaken, reserveringen kunnen maken, hun boekingsgeschiedenis kunnen bekijken en hun profiel kunnen beheren. Het admin-dashboard geeft volledige controle over diensten, reserveringen, gebruikers en websitecontent.
+The system includes user registration and authentication, so customers can create accounts, make bookings, view their booking history, and manage their profiles. The admin dashboard provides full control over services, bookings, users, and website content.
 
-Belangrijke functies zijn een online reserveringssysteem met beschikbaarheidscontrole, een dienstencatalogus, contactformulier met e-mailnotificaties, gebruikersprofielen en een volledig adminpaneel.`,
+Key features include an online booking system with availability checks, a service catalog, contact form with email notifications, user profiles, and a full admin panel.`,
     features: [
-      "Online reserveringssysteem",
-      "Gebruikersauthenticatie en profielen",
-      "Admin-dashboard",
-      "Dienstenbeheer",
-      "Contactformulier met e-mailnotificaties",
-      "Reserveringsgeschiedenis",
+      "Online booking system",
+      "User authentication and profiles",
+      "Admin dashboard",
+      "Service management",
+      "Contact form with email notifications",
+      "Booking history",
       "Responsive design",
-      "Meertalige ondersteuning",
+      "Multilingual support",
     ],
     images: [
       "/projects/omidtje/preview.png",
@@ -86,18 +86,18 @@ Belangrijke functies zijn een online reserveringssysteem met beschikbaarheidscon
     id: "4",
     title: "Brasserie Pizzeria Hama",
     description:
-      "Restaurantwebsite voor Brasserie Pizzeria Hama in Terneuzen — volledige menukaart met categorieën, online bestellen, tafelreserveringen en halal gerechten.",
-    longDescription: `Brasserie Pizzeria Hama is een restaurantwebsite voor een brasserie en pizzeria in Terneuzen. De site presenteert het merk met een donker, goud-accent design en helpt gasten online te bestellen, een tafel te reserveren of de volledige menukaart te bekijken.
+      "Restaurant website for Brasserie Pizzeria Hama in Terneuzen — full menu with categories, online ordering, table reservations, and halal dishes.",
+    longDescription: `Brasserie Pizzeria Hama is a restaurant website for a brasserie and pizzeria in Terneuzen. The site presents the brand with a dark, gold-accent design and helps guests order online, reserve a table, or browse the full menu.
 
-De menukaart is ingedeeld per categorie — voorgerechten, pizza's, pasta's, vlees, vis, desserts, dranken en meer — met prijzen en beschrijvingen per gerecht. Een uitgelichte sectie toont populaire gerechten en de aanrader van de dag.
+The menu is organized by category — starters, pizzas, pasta, meat, fish, desserts, drinks, and more — with prices and descriptions for each dish. A featured section highlights popular dishes and the dish of the day.
 
-Bezoekers kunnen direct bellen, online bestellen en openingstijden en bezorgtijden bekijken. Alle vleesgerechten zijn 100% halal.`,
+Visitors can call directly, order online, and view opening hours and delivery times. All meat dishes are 100% halal.`,
     features: [
-      "Volledige menukaart met categoriefilters",
-      "Online bestellen",
-      "Tafelreserveringen",
-      "Halal-menu sectie",
-      "Openingstijden & bezorgtijden",
+      "Full menu with category filters",
+      "Online ordering",
+      "Table reservations",
+      "Halal menu section",
+      "Opening hours & delivery times",
       "Responsive design",
     ],
     images: [
@@ -110,6 +110,30 @@ Bezoekers kunnen direct bellen, online bestellen en openingstijden en bezorgtijd
     github_url: null,
     live_url: null,
     created_at: "2025-01-01T00:00:00.000Z",
+  },
+  {
+    id: "5",
+    title: "Personal Portfolio",
+    description:
+      "Modern portfolio website with project overview, skills, experience, and contact form. Live at werk-nawid-dev.nl, built with Next.js and Supabase.",
+    longDescription: `This is my personal portfolio website — a full-stack web application where I present my projects, skills, and experience to clients and internship supervisors.
+
+The site includes a responsive homepage with hero section, a project gallery with detail pages per project, and separate pages for about, skills, experience, and contact. The contact form stores messages via Supabase.
+
+The application is built with Next.js 16 (App Router), TypeScript, React 19, and Tailwind CSS 4. The site is deployed on Vercel with a custom domain and SEO metadata (sitemap, Open Graph).`,
+    features: [
+      "Responsive design with dark theme",
+      "Project overview with detail pages",
+      "Skills and experience sections",
+      "Contact form with Supabase",
+      "SEO (metadata, sitemap)",
+      "Deployment on Vercel with custom domain",
+    ],
+    images: [],
+    technologies: ["Next.js", "TypeScript", "React", "Tailwind CSS", "Supabase"],
+    github_url: "https://github.com/Nawidh1/portfolio",
+    live_url: "https://werk-nawid-dev.nl",
+    created_at: "2026-01-01T00:00:00.000Z",
   },
 ]
 

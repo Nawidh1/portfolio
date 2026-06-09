@@ -3,8 +3,8 @@ import Projects from "@/components/Projects";
 import SiteFrame from "@/components/SiteFrame";
 
 export const metadata: Metadata = {
-  title: "Projecten",
-  description: "Bekijk mijn portfolio-projecten en technische case studies.",
+  title: "Projects",
+  description: "View my portfolio projects and technical case studies.",
 };
 
 export default function ProjectsPage() {

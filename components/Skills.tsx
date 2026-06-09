@@ -19,7 +19,7 @@ export default function Skills() {
   const groups = [
     {
       label: 'Frontend',
-      description: 'Mooie, responsieve gebruikersinterfaces bouwen',
+      description: 'Building beautiful, responsive user interfaces',
       skills: [
         { name: 'HTML', color: '#E34F26' },
         { name: 'CSS', color: '#1572B6' },
@@ -31,7 +31,7 @@ export default function Skills() {
     },
     {
       label: 'Backend',
-      description: 'Serverlogica en databasebeheer',
+      description: 'Server logic and database management',
       skills: [
         { name: 'Node.js', color: '#339933' },
         { name: 'PHP', color: '#777BB4' },
@@ -41,7 +41,7 @@ export default function Skills() {
     },
     {
       label: 'Tools',
-      description: 'Ontwikkelworkflow en samenwerking',
+      description: 'Development workflow and collaboration',
       skills: [
         { name: 'Git', color: '#F05032' },
         { name: 'GitHub', color: '#e2e2e2' },
@@ -53,7 +53,7 @@ export default function Skills() {
   let globalIndex = 0
 
   return (
-    <section ref={sectionRef} id="skills" className="py-28 relative overflow-hidden">
+    <section ref={sectionRef} id="skills" className="py-16 sm:py-20 md:py-28 relative overflow-hidden">
       <style jsx>{`
         @keyframes slideReveal {
           from { clip-path: inset(0 100% 0 0); }
@@ -85,10 +85,10 @@ export default function Skills() {
         }
       `}</style>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
         {/* ── Header ── */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-28 items-end">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 mb-16 sm:mb-20 md:mb-28 items-end">
           <div>
             {/* Label with animated line */}
             <div className="flex items-center gap-4 mb-8">
@@ -103,7 +103,7 @@ export default function Skills() {
                 <div className="w-3 h-3 rounded-full bg-emerald-500 relative">
                   <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-40" />
                 </div>
-                <span className="text-emerald-500 text-xs font-mono uppercase tracking-[0.4em]">Vaardigheden</span>
+                <span className="text-emerald-500 text-xs font-mono uppercase tracking-[0.4em]">Skills</span>
               </div>
               <div
                 className="flex-1 h-px"
@@ -124,8 +124,8 @@ export default function Skills() {
                   transition: 'all 1s cubic-bezier(0.16,1,0.3,1) 0.2s',
                 }}
               >
-                <span className="block text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1]">
-                  Technologieën
+                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1]">
+                  Technologies
                 </span>
               </h2>
             </div>
@@ -137,18 +137,18 @@ export default function Skills() {
                   transition: 'all 1s cubic-bezier(0.16,1,0.3,1) 0.35s',
                 }}
               >
-                <span className="block text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1]">
-                  die ik gebruik
+                <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1]">
+                  I work with
                 </span>
               </h2>
             </div>
           </div>
 
           {/* Right side stats */}
-          <div className="flex items-end gap-10 lg:justify-end">
+          <div className="flex items-end justify-center sm:justify-start gap-8 sm:gap-10 lg:justify-end">
             {[
-              { number: '13', label: 'Technologieën' },
-              { number: '3', label: 'Categorieën' },
+              { number: '13', label: 'Technologies' },
+              { number: '3', label: 'Categories' },
             ].map((stat, i) => (
               <div
                 key={stat.label}
@@ -158,7 +158,7 @@ export default function Skills() {
                   animation: isVisible ? `countUp 0.6s cubic-bezier(0.16,1,0.3,1) ${0.5 + i * 0.15}s forwards` : 'none',
                 }}
               >
-                <div className="text-5xl md:text-6xl font-black text-emerald-500 mb-1" style={{ animation: isVisible ? `textFlicker 4s ease-in-out ${1 + i * 0.3}s infinite` : 'none' }}>
+                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-emerald-500 mb-1" style={{ animation: isVisible ? `textFlicker 4s ease-in-out ${1 + i * 0.3}s infinite` : 'none' }}>
                   {stat.number}
                 </div>
                 <div className="text-xs text-neutral-500 font-mono uppercase tracking-wider">{stat.label}</div>
@@ -168,7 +168,7 @@ export default function Skills() {
         </div>
 
         {/* ── Skill Groups ── */}
-        <div className="space-y-24">
+        <div className="space-y-16 sm:space-y-20 md:space-y-24">
           {groups.map((group, gi) => {
             const groupStartIndex = globalIndex
             return (
@@ -183,14 +183,14 @@ export default function Skills() {
                   }}
                 >
                   <div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">{group.label}</h3>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">{group.label}</h3>
                     <p className="text-neutral-500 text-sm">{group.description}</p>
                   </div>
-                  <span className="text-neutral-700 text-xs font-mono">{group.skills.length} vaardigheden</span>
+                  <span className="text-neutral-700 text-xs font-mono">{group.skills.length} skills</span>
                 </div>
 
                 {/* Skills grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5">
                   {group.skills.map((skill, si) => {
                     const currentIndex = groupStartIndex + si
                     const isHovered = hoveredIndex === currentIndex
@@ -307,11 +307,11 @@ export default function Skills() {
             transition: 'opacity 1s ease 2s',
           }}
         >
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="text-neutral-500 text-sm">
-              Elke technologie bewust gekozen. Mijn toolkit blijft groeien.
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <p className="text-neutral-500 text-sm max-w-lg">
+              Every technology chosen with purpose. My toolkit keeps growing.
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
               {groups.map((g) => (
                 <div key={g.label} className="flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-900/50 border border-neutral-800/40">
                   <div className="w-2 h-2 rounded-full bg-emerald-500" />

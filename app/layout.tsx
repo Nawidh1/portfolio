@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ScrollRevealScript from "@/components/ScrollRevealScript";
@@ -15,6 +15,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -22,7 +28,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteName}`,
   },
   description:
-    "Portfolio van Nawid Haidari — projecten, vaardigheden en ervaring als software developer.",
+    "Portfolio of Nawid Haidari — projects, skills, and experience as a software developer.",
   alternates: {
     canonical: "/",
   },
@@ -42,15 +48,15 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: "Portfolio | Software Developer",
     description:
-      "Portfolio van Nawid Haidari — projecten, vaardigheden en ervaring als software developer.",
+      "Portfolio of Nawid Haidari — projects, skills, and experience as a software developer.",
     siteName,
-    locale: "nl_NL",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Portfolio | Software Developer",
     description:
-      "Portfolio van Nawid Haidari — projecten, vaardigheden en ervaring als software developer.",
+      "Portfolio of Nawid Haidari — projects, skills, and experience as a software developer.",
   },
 };
 
@@ -60,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning

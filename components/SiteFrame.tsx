@@ -23,7 +23,7 @@ export default function SiteFrame({ children, padTop = true }: SiteFrameProps) {
       <CursorTrail />
       <ScrollProgress />
       <Header />
-      <div className={padTop ? "pt-20" : ""}>{children}</div>
+      <div className={padTop ? "pt-16 sm:pt-20" : ""}>{children}</div>
       <Footer />
       <RobotBuddy />
       <SoundWave />

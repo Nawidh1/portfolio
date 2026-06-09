@@ -4,7 +4,7 @@ import SiteFrame from "@/components/SiteFrame";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Neem contact op met Nawid Haidari voor samenwerking of vragen.",
+  description: "Contact Nawid Haidari for collaboration or questions.",
 };
 
 export default function ContactPage() {

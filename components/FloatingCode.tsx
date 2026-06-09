@@ -39,8 +39,8 @@ const codeSymbols = [
   'DOM',
 ]
 
-function createInitialParticles(): CodeParticle[] {
-  return Array.from({ length: 15 }, (_, i) => ({
+function createInitialParticles(count = 10): CodeParticle[] {
+  return Array.from({ length: count }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,

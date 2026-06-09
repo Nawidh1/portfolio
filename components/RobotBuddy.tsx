@@ -13,13 +13,13 @@ export default function RobotBuddy() {
   const rafRef = useRef<number | null>(null)
 
   const messages = [
-    "Hallo! 👋",
-    "Leuk je te ontmoeten!",
-    "Bekijk mijn projecten!",
-    "Ik hou van coderen!",
-    "Welkom!",
-    "Laten we iets bouwen!",
-    "🤖 Piep piep!",
+    "Hello! 👋",
+    "Nice to meet you!",
+    "Check out my projects!",
+    "I love coding!",
+    "Welcome!",
+    "Let's build something!",
+    "🤖 Beep boop!",
   ]
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export default function RobotBuddy() {
   if (!isMounted) return null
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 scale-90 sm:scale-100 origin-bottom-right hidden sm:block" style={{ paddingBottom: 'env(safe-area-inset-bottom)', paddingRight: 'env(safe-area-inset-right)' }}>
       {/* Speech bubble */}
       <div
         className={`absolute bottom-full right-0 mb-2 px-4 py-2 bg-emerald-500 text-neutral-950 text-sm font-medium rounded-lg whitespace-nowrap transition-all duration-300 ${

@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative"
+      className="min-h-[100dvh] flex items-center justify-center relative overflow-hidden"
     >
       {/* Subtle grain texture */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -27,37 +27,52 @@ export default function Hero() {
       <div className="absolute left-12 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-emerald-600/30 to-transparent hidden lg:block" />
       <div className="absolute right-12 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-emerald-600/30 to-transparent hidden lg:block" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
-          <div className={`space-y-8 text-center lg:text-left ${isMounted ? 'animate-slide-up' : 'opacity-0'}`}>
-            <div className="space-y-4">
-              <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium">
-                Student Softwareontwikkeling
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[100dvh] py-24 sm:py-20">
+          <div className={`space-y-6 sm:space-y-8 text-center lg:text-left ${isMounted ? 'animate-slide-up' : 'opacity-0'}`}>
+            <div className="space-y-3 sm:space-y-4">
+              <p className="text-emerald-500 uppercase tracking-[0.2em] sm:tracking-[0.3em] text-xs sm:text-sm font-medium">
+                Software Development Student
               </p>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[0.9]">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[0.95] sm:leading-[0.9]">
                 Nawid
                 <br />
                 <span className="font-bold">Haidari</span>
               </h1>
             </div>
 
-            <p className="text-neutral-400 text-lg max-w-md leading-relaxed mx-auto lg:mx-0">
-              MBO Softwareontwikkeling student met passie voor het bouwen van webapplicaties.
-              Elke dag leer ik bij om een betere developer te worden.
+            {/* Mobile profile */}
+            <div className={`flex lg:hidden justify-center ${isMounted ? 'animate-slide-up' : 'opacity-0'}`}>
+              <div className="relative max-w-[220px] sm:max-w-[280px] w-full">
+                <img
+                  src="/profile2.jpg"
+                  alt="Nawid Haidari"
+                  className="w-full aspect-[3/4] object-cover border-4 border-neutral-600 rounded-lg"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    target.style.display = 'none'
+                  }}
+                />
+              </div>
+            </div>
+
+            <p className="text-neutral-400 text-base sm:text-lg max-w-md leading-relaxed mx-auto lg:mx-0 px-2 sm:px-0">
+              MBO Software Development student passionate about building web applications.
+              Learning every day to become a better developer.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 justify-center lg:justify-start w-full sm:w-auto px-2 sm:px-0">
               <Link
                 href="/projects"
-                className="px-8 py-4 bg-emerald-600 text-neutral-950 font-medium text-sm uppercase tracking-wider hover:bg-emerald-500 transition-colors"
+                className="w-full sm:w-auto text-center px-8 py-3.5 sm:py-4 bg-emerald-600 text-neutral-950 font-medium text-sm uppercase tracking-wider hover:bg-emerald-500 transition-colors"
               >
-                Bekijk projecten
+                View Projects
               </Link>
               <Link
                 href="/contact"
-                className="px-8 py-4 border border-neutral-700 text-white font-medium text-sm uppercase tracking-wider hover:border-emerald-600 hover:text-emerald-500 transition-colors"
+                className="w-full sm:w-auto text-center px-8 py-3.5 sm:py-4 border border-neutral-700 text-white font-medium text-sm uppercase tracking-wider hover:border-emerald-600 hover:text-emerald-500 transition-colors"
               >
-                Neem contact op
+                Get in Touch
               </Link>
             </div>
           </div>
@@ -91,9 +106,9 @@ export default function Hero() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+        <div className="absolute bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 hidden sm:block">
           <Link href="/about" className="flex flex-col items-center gap-4 text-neutral-500 hover:text-emerald-500 transition-colors group">
-            <span className="text-xs uppercase tracking-[0.3em]">Scrollen</span>
+            <span className="text-xs uppercase tracking-[0.3em]">Scroll</span>
             <div className="w-px h-16 bg-gradient-to-b from-emerald-600 to-transparent group-hover:h-20 transition-all" />
           </Link>
         </div>

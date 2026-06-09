@@ -3,8 +3,8 @@ import Skills from "@/components/Skills";
 import SiteFrame from "@/components/SiteFrame";
 
 export const metadata: Metadata = {
-  title: "Vaardigheden",
-  description: "Ontdek de technologieën en tools die ik in mijn projecten gebruik.",
+  title: "Skills",
+  description: "Discover the technologies and tools I use in my projects.",
 };
 
 export default function SkillsPage() {

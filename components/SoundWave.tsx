@@ -24,7 +24,7 @@ export default function SoundWave() {
   if (!isMounted) return null
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex items-end gap-1 h-8 p-2 bg-neutral-900/80 rounded-lg border border-neutral-800">
+    <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 hidden sm:flex items-end gap-1 h-8 p-2 bg-neutral-900/80 rounded-lg border border-neutral-800" style={{ paddingBottom: 'env(safe-area-inset-bottom)', paddingLeft: 'env(safe-area-inset-left)' }}>
       {bars.map((height, i) => (
         <div
           key={i}
