@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ScrollRevealScript from "@/components/ScrollRevealScript";
 import HydrationFix from "@/components/HydrationFix";
+import Providers from "@/components/Providers";
 import { siteName, siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
@@ -71,7 +72,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var els=document.querySelectorAll("[bis_skin_checked]");for(var i=0;i<els.length;i++){els[i].removeAttribute("bis_skin_checked");}}catch(e){}})();`,
+          }}
+        />
+        <Providers>
+          {children}
+        </Providers>
         <HydrationFix />
         <ScrollRevealScript />
       </body>

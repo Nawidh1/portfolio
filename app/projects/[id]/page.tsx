@@ -4,21 +4,25 @@ import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { getProjectById } from '@/lib/projects'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { getLocalizedProject } from '@/lib/i18n'
+import LanguageToggle from '@/components/LanguageToggle'
 
 export default function ProjectPage() {
   const params = useParams()
   const projectId = params.id as string
-  const project = getProjectById(projectId)
+  const { locale, t } = useLanguage()
+  const project = getLocalizedProject(projectId, locale)
   const [selectedImage, setSelectedImage] = useState(0)
+  const p = t.projects
 
   if (!project) {
     return (
       <div className="min-h-screen bg-neutral-950 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Project not found</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">{p.notFound}</h1>
           <Link href="/projects" className="text-emerald-500 hover:text-emerald-400">
-            ← Back to projects
+            {p.backToProjects}
           </Link>
         </div>
       </div>
@@ -36,13 +40,16 @@ export default function ProjectPage() {
           >
             NAWID<span className="font-bold">H</span>
           </Link>
-          <Link
-            href="/projects"
-            className="text-neutral-400 hover:text-emerald-500 transition-colors text-xs sm:text-sm uppercase tracking-wider text-right"
-          >
-            <span className="hidden sm:inline">← Back to projects</span>
-            <span className="sm:hidden">← Back</span>
-          </Link>
+          <div className="flex items-center gap-4">
+            <LanguageToggle />
+            <Link
+              href="/projects"
+              className="text-neutral-400 hover:text-emerald-500 transition-colors text-xs sm:text-sm uppercase tracking-wider text-right"
+            >
+              <span className="hidden sm:inline">{p.backToProjects}</span>
+              <span className="sm:hidden">{p.back}</span>
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -52,7 +59,7 @@ export default function ProjectPage() {
           {/* Title Section */}
           <div className="mb-12">
             <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
-              Project Details
+              {p.projectDetails}
             </p>
             <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-light text-white mb-4 sm:mb-6 break-words">
               {project.title}
@@ -76,7 +83,7 @@ export default function ProjectPage() {
               {project.images.length > 0 ? (
                 <Image
                   src={project.images[selectedImage]}
-                  alt={`${project.title} screenshot ${selectedImage + 1}`}
+                  alt={`${project.title} ${p.screenshot} ${selectedImage + 1}`}
                   width={1280}
                   height={720}
                   priority={selectedImage === 0}
@@ -143,7 +150,7 @@ export default function ProjectPage() {
                   >
                     <Image
                       src={img}
-                      alt={`Thumbnail ${index + 1}`}
+                      alt={`${p.thumbnail} ${index + 1}`}
                       width={112}
                       height={72}
                       loading="lazy"
@@ -160,7 +167,7 @@ export default function ProjectPage() {
           <div className="grid lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
             {/* Description */}
             <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold text-white mb-6">About This Project</h2>
+              <h2 className="text-2xl font-bold text-white mb-6">{p.aboutProject}</h2>
               <div className="text-neutral-400 leading-relaxed whitespace-pre-line">
                 {project.longDescription}
               </div>
@@ -170,7 +177,7 @@ export default function ProjectPage() {
             <div className="space-y-8">
               {/* Features */}
               <div>
-                <h3 className="text-xl font-bold text-white mb-4">Features</h3>
+                <h3 className="text-xl font-bold text-white mb-4">{p.features}</h3>
                 <ul className="space-y-3">
                   {project.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-3 text-neutral-400">
@@ -183,7 +190,7 @@ export default function ProjectPage() {
 
               {/* Links */}
               <div>
-                <h3 className="text-xl font-bold text-white mb-4">Links</h3>
+                <h3 className="text-xl font-bold text-white mb-4">{p.links}</h3>
                 <div className="flex flex-col gap-3">
                   {project.github_url && (
                     <a
@@ -195,7 +202,7 @@ export default function ProjectPage() {
                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
                       </svg>
-                      View on GitHub
+                      {p.viewOnGitHub}
                     </a>
                   )}
                   {project.live_url && (
@@ -208,7 +215,7 @@ export default function ProjectPage() {
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
-                      Live demo
+                      {p.liveDemo}
                     </a>
                   )}
                 </div>

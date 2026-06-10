@@ -1,5 +1,10 @@
+'use client'
+
+import { useLanguage } from '@/contexts/LanguageContext'
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const { t } = useLanguage()
 
   return (
     <footer className="py-8 sm:py-12">
@@ -14,9 +19,10 @@ export default function Footer() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
+              suppressHydrationWarning
               className="text-neutral-500 hover:text-emerald-500 transition-colors text-sm uppercase tracking-wider"
             >
-              GitHub
+              {t.footer.github}
             </a>
           </div>
 

@@ -1,11 +1,13 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Skills() {
   const [isVisible, setIsVisible] = useState(false)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -18,8 +20,8 @@ export default function Skills() {
 
   const groups = [
     {
-      label: 'Frontend',
-      description: 'Building beautiful, responsive user interfaces',
+      label: t.skills.groups[0].label,
+      description: t.skills.groups[0].description,
       skills: [
         { name: 'HTML', color: '#E34F26' },
         { name: 'CSS', color: '#1572B6' },
@@ -30,8 +32,8 @@ export default function Skills() {
       ],
     },
     {
-      label: 'Backend',
-      description: 'Server logic and database management',
+      label: t.skills.groups[1].label,
+      description: t.skills.groups[1].description,
       skills: [
         { name: 'Node.js', color: '#339933' },
         { name: 'PHP', color: '#777BB4' },
@@ -40,8 +42,8 @@ export default function Skills() {
       ],
     },
     {
-      label: 'Tools',
-      description: 'Development workflow and collaboration',
+      label: t.skills.groups[2].label,
+      description: t.skills.groups[2].description,
       skills: [
         { name: 'Git', color: '#F05032' },
         { name: 'GitHub', color: '#e2e2e2' },
@@ -106,7 +108,7 @@ export default function Skills() {
                 <div className="w-3 h-3 rounded-full bg-emerald-500 relative">
                   <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-40" />
                 </div>
-                <span className="text-emerald-500 text-xs font-mono uppercase tracking-[0.4em]">Skills</span>
+                <span className="text-emerald-500 text-xs font-mono uppercase tracking-[0.4em]">{t.skills.label}</span>
               </div>
               <div
                 className="flex-1 h-px"
@@ -128,7 +130,7 @@ export default function Skills() {
                 }}
               >
                 <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1]">
-                  Technologies
+                  {t.skills.titleLine1}
                 </span>
               </h2>
             </div>
@@ -141,7 +143,7 @@ export default function Skills() {
                 }}
               >
                 <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1]">
-                  I work with
+                  {t.skills.titleLine2}
                 </span>
               </h2>
             </div>
@@ -150,8 +152,8 @@ export default function Skills() {
           {/* Right side stats */}
           <div className="flex items-end justify-center sm:justify-start gap-8 sm:gap-10 lg:justify-end">
             {[
-              { number: '16', label: 'Technologies' },
-              { number: '3', label: 'Categories' },
+              { number: '16', label: t.skills.technologies },
+              { number: '3', label: t.skills.categories },
             ].map((stat, i) => (
               <div
                 key={stat.label}
@@ -189,7 +191,7 @@ export default function Skills() {
                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">{group.label}</h3>
                     <p className="text-neutral-500 text-sm">{group.description}</p>
                   </div>
-                  <span className="text-neutral-700 text-xs font-mono">{group.skills.length} skills</span>
+                  <span className="text-neutral-700 text-xs font-mono">{group.skills.length} {t.skills.skillsCount}</span>
                 </div>
 
                 {/* Skills grid */}
@@ -312,7 +314,7 @@ export default function Skills() {
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <p className="text-neutral-500 text-sm max-w-lg">
-              Every technology chosen with purpose. My toolkit keeps growing.
+              {t.skills.footer}
             </p>
             <div className="flex flex-wrap justify-center gap-2">
               {groups.map((g) => (

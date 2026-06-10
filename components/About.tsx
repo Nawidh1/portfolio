@@ -3,10 +3,13 @@
 import Image from 'next/image'
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const { t } = useLanguage()
+  const a = t.about
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -110,7 +113,7 @@ export default function About() {
             <div className="w-3 h-3 rounded-full bg-emerald-500 relative">
               <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-50" />
             </div>
-            <span className="text-emerald-500 text-sm font-mono tracking-widest uppercase">About Me</span>
+            <span className="text-emerald-500 text-sm font-mono tracking-widest uppercase">{a.label}</span>
           </div>
           <div className={`flex-1 h-px origin-left ${isVisible ? 'animate-[reveal-line_1.5s_ease-out_forwards]' : 'scale-x-0'}`} style={{ background: 'linear-gradient(90deg, #10b981, transparent)' }} />
         </div>
@@ -151,7 +154,7 @@ export default function About() {
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="backdrop-blur-xl bg-neutral-950/60 border border-white/10 rounded-xl px-5 py-4 group-hover:border-emerald-500/30 transition-all duration-500 group-hover:translate-y-[-4px]">
                       <div className="text-white font-semibold text-lg tracking-wide">Nawid Haidari</div>
-                      <div className="gradient-text text-sm font-medium mt-1">Software Development Student</div>
+                      <div className="gradient-text text-sm font-medium mt-1">{a.role}</div>
                     </div>
                   </div>
                 </div>
@@ -167,7 +170,7 @@ export default function About() {
           <div className="lg:col-span-7 flex flex-col justify-center">
             {/* Animated heading - word by word */}
             <div className="mb-8" style={{ perspective: '600px' }}>
-              {['Passionate', 'about', 'building', 'digital', 'experiences.'].map((word, i) => (
+              {a.headingWords.map((word, i) => (
                 <span
                   key={i}
                   className={isVisible ? 'word-animate' : 'opacity-0'}
@@ -175,11 +178,11 @@ export default function About() {
                     animationDelay: `${0.4 + i * 0.12}s`,
                     marginRight: '0.35em',
                     fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-                    fontWeight: word === 'building' || word === 'experiences.' ? 700 : 300,
-                    color: word === 'building' || word === 'digital' ? undefined : '#e5e5e5',
+                    fontWeight: a.headingHighlights.includes(i) ? 700 : 300,
+                    color: a.headingHighlights.includes(i) ? undefined : '#e5e5e5',
                   }}
                 >
-                  {(word === 'building' || word === 'digital') ? (
+                  {a.headingHighlights.includes(i) ? (
                     <span className="gradient-text">{word}</span>
                   ) : word}
                 </span>
@@ -188,10 +191,7 @@ export default function About() {
 
             {/* Description paragraphs with staggered reveal */}
             <div className="space-y-4 mb-10">
-              {[
-                "I'm Nawid Haidari, a third-year Software Development student (MBO 4) with a passion for building software that works well and feels great for the user.",
-                "I love solving technical challenges and I grow with every project I take on. Read more about what I build, my projects, background, and interests below.",
-              ].map((text, i) => (
+              {a.paragraphs.map((text, i) => (
                 <p
                   key={i}
                   className={`text-neutral-400 text-base sm:text-lg leading-relaxed transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
@@ -204,12 +204,7 @@ export default function About() {
 
             {/* Education row */}
             <div className={`grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 mb-8 sm:mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`} style={{ transitionDelay: '1200ms' }}>
-              {[
-                { value: 'MBO 4', label: 'Level' },
-                { value: 'Year 3', label: 'Current' },
-                { value: '2026', label: 'Graduating' },
-                { value: '8 yrs', label: 'In Netherlands' },
-              ].map((stat, i) => (
+              {a.stats.map((stat, i) => (
                 <div key={i} className="group text-center p-3 sm:p-4 rounded-xl bg-neutral-900/50 border border-neutral-800/50 hover:border-emerald-500/30 hover:bg-emerald-950/20 transition-all duration-400 cursor-default">
                   <div className="text-xl sm:text-2xl md:text-3xl font-light text-emerald-500 mb-1 group-hover:scale-110 transition-transform duration-300 inline-block">{stat.value}</div>
                   <div className="text-xs text-neutral-600 uppercase tracking-wider">{stat.label}</div>
@@ -224,28 +219,12 @@ export default function About() {
           className={`mb-12 sm:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '1350ms' }}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">What I Build</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{a.whatIBuild.title}</h3>
           <p className="text-neutral-500 text-sm sm:text-base mb-6 max-w-2xl">
-            During my studies and projects I work on different types of software — always with the user in mind.
+            {a.whatIBuild.subtitle}
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {[
-              {
-                icon: '🌐',
-                title: 'Websites',
-                desc: 'Responsive websites for businesses and organizations, with clear structure, menus, contact forms, and a professional look.',
-              },
-              {
-                icon: '⚙️',
-                title: 'Web Applications',
-                desc: 'Systems with user accounts, admin dashboards, bookings, content management, and database integrations.',
-              },
-              {
-                icon: '🗄️',
-                title: 'Databases & Backend',
-                desc: 'Storing and managing data with SQL, MySQL, Supabase, and PostgreSQL — secure, structured, and production-ready.',
-              },
-            ].map((item, i) => (
+            {a.whatIBuild.items.map((item) => (
               <div
                 key={item.title}
                 className="p-5 sm:p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/60 hover:border-emerald-500/30 transition-all duration-300"
@@ -263,28 +242,12 @@ export default function About() {
           className={`mb-12 sm:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '1650ms' }}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Project Experience</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{a.projectExperience.title}</h3>
           <p className="text-neutral-500 text-sm sm:text-base mb-6 max-w-2xl">
-            Some projects I've built during my studies and beyond.
+            {a.projectExperience.subtitle}
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
-            {[
-              {
-                title: 'Sadat Victorian Association',
-                desc: 'Bilingual community website with news, events, and admin dashboard.',
-                tech: 'PHP · CSS · JavaScript',
-              },
-              {
-                title: 'Kapper Omid',
-                desc: 'Barber shop website with online bookings, user accounts, and email notifications.',
-                tech: 'PHP · CSS · PHPMailer',
-              },
-              {
-                title: 'Brasserie Pizzeria Hama',
-                desc: 'Restaurant website with full menu, ordering, and reservations.',
-                tech: 'Astro · TypeScript · PL/pgSQL',
-              },
-            ].map((project) => (
+            {a.projectExperience.items.map((project) => (
               <div
                 key={project.title}
                 className="p-5 rounded-xl bg-neutral-900/40 border border-neutral-800/50 hover:border-emerald-500/30 transition-colors"
@@ -302,28 +265,12 @@ export default function About() {
           className={`mb-12 sm:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '1700ms' }}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">My Background</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{a.background.title}</h3>
           <p className="text-neutral-500 text-sm sm:text-base mb-6 max-w-2xl">
-            A brief look at my family, where I live, and what I plan after graduation.
+            {a.background.subtitle}
           </p>
           <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
-            {[
-              {
-                icon: '👨‍👩‍👦‍👦',
-                title: 'Family',
-                desc: 'I have four brothers. One brother is married and lives in Australia; the rest of my family lives in the Netherlands.',
-              },
-              {
-                icon: '🇳🇱',
-                title: 'Netherlands',
-                desc: "We've been living in the Netherlands for almost 8 years. Here I study Software Development and build my career as a developer.",
-              },
-              {
-                icon: '🇦🇺',
-                title: 'Plans for Australia',
-                desc: 'After completing my studies, I plan to move to Australia — also to be closer to family.',
-              },
-            ].map((item) => (
+            {a.background.items.map((item) => (
               <div
                 key={item.title}
                 className="p-5 sm:p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/60 hover:border-emerald-500/30 transition-all duration-300"
@@ -341,33 +288,12 @@ export default function About() {
           className={`mb-12 sm:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '1750ms' }}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">Beyond Code</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">{a.beyondCode.title}</h3>
           <p className="text-neutral-500 text-sm sm:text-base mb-6 max-w-2xl">
-            Besides software development, I have other interests that keep me sharp and curious.
+            {a.beyondCode.subtitle}
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              {
-                icon: '⚽',
-                title: 'Football',
-                desc: 'I love football — watching, playing, and following the sport keeps me active and competitive.',
-              },
-              {
-                icon: '🎮',
-                title: 'Gaming',
-                desc: 'I enjoy gaming in my free time. It also helps me think faster and solve problems.',
-              },
-              {
-                icon: '🚀',
-                title: 'Future Technology',
-                desc: 'I follow new tech and innovations — AI, cloud, modern frameworks, and what the future brings.',
-              },
-              {
-                icon: '📈',
-                title: 'Crypto & Trading',
-                desc: 'In my free time I learn about crypto and stock trading to better understand markets and technology.',
-              },
-            ].map((item) => (
+            {a.beyondCode.items.map((item) => (
               <div
                 key={item.title}
                 className="p-5 rounded-xl bg-neutral-900/40 border border-neutral-800/50 hover:border-emerald-500/30 transition-colors"
@@ -385,22 +311,22 @@ export default function About() {
           className={`p-6 sm:p-8 md:p-10 rounded-2xl bg-neutral-900/50 border border-neutral-800/60 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '1900ms' }}
         >
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">Where I'm Headed</h3>
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">{a.goals.title}</h3>
           <p className="text-neutral-400 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto mb-6">
-            After my studies I want to grow as a full-stack developer and move to Australia. There I hope to find work in the tech sector, keep learning from experienced developers, and contribute to meaningful projects — in the Netherlands or internationally, as long as I can keep building and growing.
+            {a.goals.text}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
               href="/projects"
               className="px-6 py-3 bg-emerald-600 text-neutral-950 font-medium text-sm uppercase tracking-wider hover:bg-emerald-500 transition-colors rounded-lg"
             >
-              View My Projects
+              {a.goals.viewProjects}
             </Link>
             <Link
               href="/contact"
               className="px-6 py-3 border border-neutral-700 text-white font-medium text-sm uppercase tracking-wider hover:border-emerald-600 hover:text-emerald-500 transition-colors rounded-lg"
             >
-              Get in Touch
+              {a.goals.getInTouch}
             </Link>
           </div>
         </div>

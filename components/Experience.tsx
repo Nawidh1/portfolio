@@ -1,10 +1,12 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Experience() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -15,25 +17,13 @@ export default function Experience() {
     return () => observer.disconnect()
   }, [])
 
-  const journey = [
-    { year: '2022', title: 'Started MBO 4', desc: 'Began Software Development. Learned programming fundamentals, logic, and web development.', icon: '🎓' },
-    { year: '2023', title: 'First web projects', desc: 'Built applications with HTML, CSS, JavaScript, and PHP. Also learned database design with MySQL.', icon: '💻' },
-    { year: '2024', title: 'Modern tech stack', desc: 'Moved to React, Next.js, and Tailwind CSS. Also explored Node.js.', icon: '⚡' },
-    { year: '2025', title: 'Full-stack focus', desc: 'Third-year student. Building complex full-stack apps and continuously expanding my skills.', icon: '🚀' },
-    { year: '2026', title: 'Portfolio & client projects', desc: 'Launched my own portfolio and delivered multiple real-world projects, including Brasserie Hama with Astro, TypeScript, and Supabase.', icon: '🌐' },
-  ]
-
-  const stats = [
-    { label: 'School', value: 'MBO 4' },
-    { label: 'Program', value: 'Software Dev' },
-    { label: 'Status', value: 'Year 3 · 2026' },
-  ]
-
+  const journey = t.experience.journey
+  const stats = t.experience.stats
   const skills = [
-    { name: 'Frontend', level: 70 },
-    { name: 'Backend', level: 50 },
-    { name: 'Database', level: 40 },
-    { name: 'UI/UX', level: 60 },
+    { name: t.experience.skillNames.frontend, level: 70 },
+    { name: t.experience.skillNames.backend, level: 50 },
+    { name: t.experience.skillNames.database, level: 40 },
+    { name: t.experience.skillNames.uiux, level: 60 },
   ]
 
   return (
@@ -58,7 +48,7 @@ export default function Experience() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="text-emerald-400 text-sm font-mono tracking-widest uppercase">My Background</span>
+            <span className="text-emerald-400 text-sm font-mono tracking-widest uppercase">{t.experience.label}</span>
           </div>
           
           <h2 
@@ -69,7 +59,7 @@ export default function Experience() {
               transition: 'all 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s'
             }}
           >
-            Education & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">experience</span>
+            {t.experience.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">{t.experience.titleHighlight}</span>
           </h2>
         </div>
 
@@ -141,7 +131,7 @@ export default function Experience() {
             >
               <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
                 <span className="w-8 h-px bg-emerald-500/50"></span>
-                Technical Focus
+                {t.experience.technicalFocus}
               </h3>
               
               <div className="space-y-6">
@@ -176,9 +166,9 @@ export default function Experience() {
               }}
             >
               <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl group-hover:bg-emerald-500/20 transition-colors" />
-              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Keep Learning</h3>
+              <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">{t.experience.keepLearning.title}</h3>
               <p className="text-sm text-neutral-400 leading-relaxed relative z-10 group-hover:text-neutral-300 transition-colors">
-                In 2026 I'm expanding my knowledge in cloud deployment, Supabase, and modern frameworks to build production-ready and maintainable applications.
+                {t.experience.keepLearning.text}
               </p>
             </div>
 

@@ -2,8 +2,10 @@
 
 import { useState, FormEvent } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Contact() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -56,14 +58,13 @@ export default function Contact() {
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12 reveal">
           <p className="text-emerald-500 uppercase tracking-[0.3em] text-sm font-medium mb-4">
-            Get in Touch
+            {t.contact.label}
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight mb-4 sm:mb-6">
-            Let&apos;s <span className="font-bold">talk</span>
+            {t.contact.title} <span className="font-bold">{t.contact.titleBold}</span>
           </h2>
           <p className="text-neutral-400 max-w-2xl mx-auto text-base sm:text-lg px-2 sm:px-0">
-            Interested in working together or have a question?
-            Feel free to send a message — I&apos;d love to hear from you.
+            {t.contact.subtitle}
           </p>
         </div>
 
@@ -71,7 +72,7 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="reveal flex">
             <div className="bg-gradient-to-br from-neutral-900/50 via-emerald-950/10 to-neutral-900/50 border border-emerald-800/30 rounded-2xl p-5 sm:p-6 md:p-8 backdrop-blur-sm flex flex-col w-full">
-              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6 sm:mb-8 text-center lg:text-left">Contact Details</h3>
+              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6 sm:mb-8 text-center lg:text-left">{t.contact.details}</h3>
               
               <div className="space-y-6 flex-1">
                 {/* Email */}
@@ -85,7 +86,7 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">Email</p>
+                    <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">{t.contact.email}</p>
                     <p className="text-white group-hover:text-emerald-400 transition-colors">snhhaidari@gmail.com</p>
                   </div>
                 </a>
@@ -99,14 +100,14 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">Location</p>
-                    <p className="text-white">Netherlands</p>
+                    <p className="text-neutral-500 text-xs uppercase tracking-wider mb-1">{t.contact.location}</p>
+                    <p className="text-white">{t.contact.locationValue}</p>
                   </div>
                 </div>
 
                 {/* Social Links */}
                 <div className="pt-4 border-t border-neutral-800">
-                  <p className="text-neutral-500 text-xs uppercase tracking-wider mb-4 text-center lg:text-left">Social Media</p>
+                  <p className="text-neutral-500 text-xs uppercase tracking-wider mb-4 text-center lg:text-left">{t.contact.socialMedia}</p>
                   <div className="flex gap-4 justify-center lg:justify-start">
                     <a
                       href="https://github.com"
@@ -127,7 +128,7 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="reveal flex">
             <div className="bg-gradient-to-br from-neutral-900/50 via-emerald-950/10 to-neutral-900/50 border border-emerald-800/30 rounded-2xl p-5 sm:p-6 md:p-8 backdrop-blur-sm flex flex-col w-full">
-              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6 sm:mb-8 text-center lg:text-left">Send a Message</h3>
+              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6 sm:mb-8 text-center lg:text-left">{t.contact.sendMessage}</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col">
                 <div>
@@ -135,7 +136,7 @@ export default function Contact() {
                     htmlFor="name"
                     className="block text-neutral-400 text-sm font-medium mb-2"
                   >
-                    Name
+                    {t.contact.formName}
                   </label>
                   <input
                     type="text"
@@ -145,7 +146,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-neutral-800/30 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20 transition-all"
-                    placeholder="Your name"
+                    placeholder={t.contact.namePlaceholder}
                   />
                 </div>
 
@@ -154,7 +155,7 @@ export default function Contact() {
                     htmlFor="email"
                     className="block text-neutral-400 text-sm font-medium mb-2"
                   >
-                    Email
+                    {t.contact.formEmail}
                   </label>
                   <input
                     type="email"
@@ -164,7 +165,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 bg-neutral-800/30 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20 transition-all"
-                    placeholder="you@email.com"
+                    placeholder={t.contact.emailPlaceholder}
                   />
                 </div>
 
@@ -173,7 +174,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="block text-neutral-400 text-sm font-medium mb-2"
                   >
-                    Message
+                    {t.contact.formMessage}
                   </label>
                   <textarea
                     id="message"
@@ -183,7 +184,7 @@ export default function Contact() {
                     required
                     rows={6}
                     className="w-full px-4 py-3 bg-neutral-800/30 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-600/20 transition-all resize-none"
-                    placeholder="Tell me about your project or just say hello..."
+                    placeholder={t.contact.messagePlaceholder}
                   />
                 </div>
 
@@ -199,18 +200,18 @@ export default function Contact() {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      Sending...
+                      {t.contact.sending}
                     </>
                   ) : status === 'success' ? (
                     <>
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                       </svg>
-                      Message sent!
+                      {t.contact.sent}
                     </>
                   ) : (
                     <>
-                      Send Message
+                      {t.contact.send}
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
@@ -222,7 +223,7 @@ export default function Contact() {
                 {status === 'error' && (
                   <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
                     <p className="text-red-400 text-sm text-center">
-                      Something went wrong while sending. Please try again.
+                      {t.contact.error}
                     </p>
                   </div>
                 )}
@@ -230,7 +231,7 @@ export default function Contact() {
                 {status === 'success' && (
                   <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg">
                     <p className="text-emerald-400 text-sm text-center">
-                      Thank you! Your message was sent successfully.
+                      {t.contact.success}
                     </p>
                   </div>
                 )}

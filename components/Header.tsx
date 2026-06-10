@@ -3,12 +3,15 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useLanguage } from '@/contexts/LanguageContext'
+import LanguageToggle from '@/components/LanguageToggle'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const rafRef = useRef<number | null>(null)
   const pathname = usePathname()
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,12 +45,12 @@ export default function Header() {
   }, [isMobileMenuOpen])
 
   const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/skills', label: 'Skills' },
-    { href: '/projects', label: 'Projects' },
-    { href: '/experience', label: 'Experience' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/', label: t.nav.home },
+    { href: '/about', label: t.nav.about },
+    { href: '/skills', label: t.nav.skills },
+    { href: '/projects', label: t.nav.projects },
+    { href: '/experience', label: t.nav.experience },
+    { href: '/contact', label: t.nav.contact },
   ]
 
   return (
@@ -71,8 +74,7 @@ export default function Header() {
               NAWID<span className="font-bold">H</span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-12">
+            <div className="hidden lg:flex items-center gap-8">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -86,32 +88,34 @@ export default function Header() {
                   {item.label}
                 </Link>
               ))}
+              <LanguageToggle />
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden relative z-[120] text-white p-3 -mr-1 touch-manipulation"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={isMobileMenuOpen}
-            >
-              <div className="w-6 h-6 flex flex-col justify-center gap-1.5">
-                <span className={`block h-px w-full bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
-                <span className={`block h-px w-full bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
-                <span className={`block h-px w-full bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
-              </div>
-            </button>
+            <div className="lg:hidden flex items-center gap-2">
+              <LanguageToggle />
+              <button
+                className="relative z-[120] text-white p-3 -mr-1 touch-manipulation"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
+                aria-expanded={isMobileMenuOpen}
+              >
+                <div className="w-6 h-6 flex flex-col justify-center gap-1.5">
+                  <span className={`block h-px w-full bg-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+                  <span className={`block h-px w-full bg-white transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+                  <span className={`block h-px w-full bg-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+                </div>
+              </button>
+            </div>
           </div>
         </nav>
       </header>
 
-      {/* Full-screen mobile menu — sibling of header, not inside it (avoids backdrop-blur containing-block bug) */}
       {isMobileMenuOpen && (
         <div
           className="lg:hidden fixed inset-0 z-[100] bg-neutral-950"
           role="dialog"
           aria-modal="true"
-          aria-label="Navigation menu"
+          aria-label={t.nav.menuLabel}
         >
           <nav className="flex flex-col items-center justify-center gap-7 h-full px-6 pt-16 pb-8">
             {navItems.map((item) => (
