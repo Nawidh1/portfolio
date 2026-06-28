@@ -96,7 +96,18 @@ export const nl: Translations = {
     label: "Portfolio",
     title: "Mijn",
     titleBold: "projecten",
-    subtitle: "Projecten die ik heb gebouwd tijdens mijn studie. Elk project heeft me als developer laten groeien.",
+    subtitle: "Een overzicht van wat ik heb gebouwd — tijdens mijn studie en voor klanten.",
+    schoolSection: {
+      title: "Schoolprojecten",
+      subtitle: "Projecten die ik tijdens mijn MBO Software Development opleiding heb gemaakt.",
+    },
+    clientSection: {
+      title: "Klantprojecten",
+      subtitle: "Websites en applicaties die ik voor opdrachtgevers heb gebouwd.",
+    },
+    schoolBadge: "School",
+    clientBadge: "Klant",
+    photoCount: "screenshots",
     emptyTitle: "Nog geen projecten",
     emptySubtitle: "Projecten verschijnen hier zodra ze zijn toegevoegd",
     viewDetails: "Bekijk details",
@@ -134,6 +145,25 @@ Het admin dashboard stelt geautoriseerde gebruikers in staat alle content te beh
           "Bronnenbibliotheek",
           "Contactformulier",
           "Responsive design",
+        ],
+      },
+      "2": {
+        title: "Gear2Go",
+        description: "Peer-to-peer marketplace om sportmateriaal te huren — browse, kaart, advertenties plaatsen en gebruikersprofielen. Schoolproject met PHP en PostgreSQL.",
+        longDescription: `Gear2Go is een community marketplace waar gebruikers sportmateriaal van elkaar kunnen huren — van surfboards en fietsen tot wintersport en balsport.
+
+Het platform biedt een homepage met categorieën, een browse-pagina met filters, een interactieve kaart met locaties in Nederland, en een meerstapsformulier om eigen materiaal te verhuren. Gebruikers hebben profielen met verificaties, een inbox voor berichten, en admins kunnen advertenties modereren.
+
+Het project is gebouwd tijdens mijn opleiding Software Development met PHP, PostgreSQL (Supabase), JavaScript en een donker, modern UI-design. De site ondersteunt Engels en Nederlands.`,
+        features: [
+          "Homepage met categorieën en top gear",
+          "Browse & zoeken met filters",
+          "Interactieve kaart met locaties",
+          "Advertentie plaatsen (foto's, details, locatie)",
+          "Gebruikersprofielen en verificaties",
+          "Inbox & berichten",
+          "Admin moderatie van advertenties",
+          "Tweetalig (EN / NL)",
         ],
       },
       "3": {

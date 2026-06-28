@@ -54,6 +54,11 @@ export interface Translations {
     title: string;
     titleBold: string;
     subtitle: string;
+    schoolSection: { title: string; subtitle: string };
+    clientSection: { title: string; subtitle: string };
+    schoolBadge: string;
+    clientBadge: string;
+    photoCount: string;
     emptyTitle: string;
     emptySubtitle: string;
     viewDetails: string;

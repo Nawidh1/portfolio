@@ -21,6 +21,13 @@ export function getLocalizedProjects(locale: Locale): LocalizedProject[] {
   }));
 }
 
+export function getLocalizedProjectsByCategory(
+  locale: Locale,
+  category: PortfolioProjectBase["category"]
+): LocalizedProject[] {
+  return getLocalizedProjects(locale).filter((project) => project.category === category);
+}
+
 export function getLocalizedProject(id: string, locale: Locale): LocalizedProject | undefined {
   return getLocalizedProjects(locale).find((project) => project.id === id);
 }

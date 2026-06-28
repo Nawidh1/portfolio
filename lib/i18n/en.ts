@@ -96,7 +96,18 @@ export const en: Translations = {
     label: "Portfolio",
     title: "My",
     titleBold: "projects",
-    subtitle: "Projects I've built during my studies. Each one helped me grow as a developer.",
+    subtitle: "An overview of what I've built — during my studies and for clients.",
+    schoolSection: {
+      title: "School Projects",
+      subtitle: "Projects I built during my MBO Software Development program.",
+    },
+    clientSection: {
+      title: "Client Projects",
+      subtitle: "Websites and applications I've built for real clients.",
+    },
+    schoolBadge: "School",
+    clientBadge: "Client",
+    photoCount: "screenshots",
     emptyTitle: "No projects yet",
     emptySubtitle: "Projects will appear here once added",
     viewDetails: "View Details",
@@ -134,6 +145,25 @@ The admin dashboard allows authorized users to manage all content, including new
           "Resource library",
           "Contact form",
           "Responsive design",
+        ],
+      },
+      "2": {
+        title: "Gear2Go",
+        description: "Peer-to-peer marketplace for renting sports gear — browse, map, list items, and user profiles. School project built with PHP and PostgreSQL.",
+        longDescription: `Gear2Go is a community marketplace where users can rent sports equipment from each other — from surfboards and bikes to winter sports and ball sports.
+
+The platform includes a homepage with categories, a browse page with filters, an interactive map with locations across the Netherlands, and a multi-step form to list your own gear. Users have profiles with verifications, an inbox for messaging, and admins can moderate listings.
+
+Built during my Software Development program with PHP, PostgreSQL (Supabase), JavaScript, and a modern dark UI. The site supports English and Dutch.`,
+        features: [
+          "Homepage with categories and top gear",
+          "Browse & search with filters",
+          "Interactive map with locations",
+          "List gear (photos, details, location)",
+          "User profiles and verifications",
+          "Inbox & messaging",
+          "Admin listing moderation",
+          "Bilingual (EN / NL)",
         ],
       },
       "3": {
